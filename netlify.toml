@@ -7,3 +7,33 @@ publish = "dist"
 from = "/*"
 status = 404
 to = "/index.html"
+
+[[redirects]]
+from = "/blog"
+status = 301
+to = "/release"
+
+[[redirects]]
+from = "/blog/nomie-5-4-0-release"
+status = 301
+to = "/release/5.4"
+
+[[redirects]]
+from = "/blog/nomie-5-introduction"
+status = 301
+to = "/release/5.0"
+
+[[redirects]]
+from = "/podcast"
+status = 301
+to = "https://soundcloud.com/nomiepodcast"
+
+[[redirects]]
+from = "/podcast/*"
+status = 301
+to = "https://soundcloud.com/nomiepodcast"
+
+[[redirects]]
+from = "/opensource"
+status = 301
+to = "https://github.com/open-nomie/nomie"

@@ -2,7 +2,12 @@
   <div class="layout--app">
     <header>
       <div class="contain mx-auto px-4">
-        <button class="text-3xl px-2 mr-3 text-gray-600" @click="$router.back()" v-if="showBack">
+        <button
+          class="text-3xl px-2 mr-3 text-gray-600"
+          style="line-height:100%"
+          @click="$router.back()"
+          v-if="showBack"
+        >
           <i class="zmdi zmdi-arrow-back" />
         </button>
         <nuxt-link to="/" title="Nomie home - privacy life tracking">
@@ -58,13 +63,13 @@
         <div class="w-full md:w-2/12 mt-6">
           <ul>
             <li>
-              <a href="mailto:support@happydata.org">Contact Me</a>
+              <nuxt-link to="/contact" title="Contact Happy Data">Contact Me</nuxt-link>
             </li>
             <li>
               <a href="https://patreon.com/nomieapp">Patrons Only</a>
             </li>
             <li>
-              <a href="/privacy">Privacy</a>
+              <nuxt-link to="/privacy">Privacy Policy</nuxt-link>
             </li>
           </ul>
         </div>

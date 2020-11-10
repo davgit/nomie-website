@@ -12,9 +12,9 @@ collections:
     format: 'frontmatter'
     folder: 'src/content/releases'
     create: true
-    slug: '{{title}}'
+    slug: '{{version}}'
     identifier_field: 'title'
-    preview_path: 'release/{{title}}'
+    preview_path: 'release/{{version}}'
     preview_path_date_field: 'createdAt'
     editor:
       preview: true

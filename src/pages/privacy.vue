@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :showBack="true">
     <div class="contain mx-auto mb-3 md:mb-5">
       <h1 class="website-title text-4xl lg:text-6xl">Privacy Policy</h1>
     </div>
