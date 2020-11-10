@@ -1,21 +1,21 @@
 <template>
   <div class="content privacy-policy">
-    <h2>Privacy Seriously Matters.</h2>
+    <h2 class="leading-6">Privacy Seriously Matters.</h2>
     <ul class="no-list">
       <li>
-        <i class="zmdi zmdi-minus-circle text-red-600"></i>
+        <i class="zmdi zmdi-minus-circle text-red-600 mr-3"></i>
         No accounts or email
       </li>
       <li>
-        <i class="zmdi zmdi-minus-circle text-red-600"></i>
+        <i class="zmdi zmdi-minus-circle text-red-600 mr-3"></i>
         No Google Analytics
       </li>
       <li>
-        <i class="zmdi zmdi-minus-circle text-red-600"></i>
+        <i class="zmdi zmdi-minus-circle text-red-600 mr-3"></i>
         No User Tracking
       </li>
       <li>
-        <i class="zmdi zmdi-check-circle text-green-600"></i>
+        <i class="zmdi zmdi-check-circle text-green-600 mr-3"></i>
         You own your data.
       </li>
     </ul>
@@ -45,4 +45,8 @@ export default {}
 </script>
 
 <style>
+.no-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
 </style>

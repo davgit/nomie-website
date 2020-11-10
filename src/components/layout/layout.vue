@@ -1,6 +1,6 @@
 <template>
   <div class="layout--app">
-    <header>
+    <header class="p-1">
       <div class="contain mx-auto px-4">
         <button
           class="text-3xl px-2 mr-3 text-gray-600"
@@ -50,6 +50,19 @@
         <div class="w-full md:w-2/12 mt-6">
           <ul>
             <li>
+              <nuxt-link to="/release">Releases</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/tutorials">Tutorials</nuxt-link>
+            </li>
+            <li>
+              <nuxt-link to="/privacy">Privacy Policy</nuxt-link>
+            </li>
+          </ul>
+        </div>
+        <div class="w-full md:w-2/12 mt-6">
+          <ul>
+            <li>
               <a href="https://reddit.com/r/nomie">r/nomie</a>
             </li>
             <li>
@@ -68,8 +81,9 @@
             <li>
               <a href="https://patreon.com/nomieapp">Patrons Only</a>
             </li>
+
             <li>
-              <nuxt-link to="/privacy">Privacy Policy</nuxt-link>
+              <a href="#">&copy; 2020</a>
             </li>
           </ul>
         </div>
@@ -189,8 +203,6 @@ header {
   @apply bg-white;
   @apply top-0;
   @apply mb-4;
-  @apply p-3;
-  @apply py-4;
   @apply shadow-lg;
   @apply z-50;
 }
@@ -204,12 +216,14 @@ header .contain {
 footer {
   @apply py-6;
   @apply px-5;
-
   @apply text-gray-900;
 }
 footer ul li a {
   @apply px-1;
   @apply py-2;
   @apply block;
+}
+footer ul li a:hover {
+  @apply text-blue-600;
 }
 </style>

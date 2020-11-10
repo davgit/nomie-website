@@ -35,7 +35,7 @@
         </li>
       </ul>
       <div class="tab-content">
-        <main class="container mx-auto p-4 md:p-6 md:text-3xl">
+        <main class="container mx-auto p-0 md:p-10 md:text-3xl bg-gray-900">
           <TabPrivacy v-if="tab == 'privacy'" />
           <TabInstall v-else-if="tab == 'install'" />
           <TabFree v-else-if="tab == 'price'" />
@@ -134,6 +134,10 @@ export default Vue.extend({
   @apply flex;
   @apply items-center;
   @apply justify-center;
+  @apply mx-auto;
+  @apply mt-3;
+  @apply mb-0;
+  @apply p-0;
 }
 .container--tabs .tabs button {
   @apply block;

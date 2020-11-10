@@ -12,10 +12,10 @@
         <h2 class="font-bold text-xl">
           Nomie v{{release.title}}
           <span
-            class="opacity-50 font-normal text-base"
+            class="text-gray-500 font-normal text-base"
           >{{displayDate(release.createdAt)}}</span>
         </h2>
-        <p>{{release.description}}</p>
+        <p class="text-gray-600">{{release.description}}</p>
       </nuxt-link>
     </div>
   </Layout>
