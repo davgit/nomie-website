@@ -1,0 +1,9 @@
+
+[build]
+command = "npm run generate"
+publish = "dist"
+
+[[redirects]]
+from = "/*"
+status = 404
+to = "/index.html"

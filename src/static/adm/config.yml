@@ -1,0 +1,90 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: src/static/img
+public_folder: /img
+show_preview_links: true
+
+collections:
+  - name: 'release'
+    label: 'Release'
+    format: 'frontmatter'
+    folder: 'src/content/releases'
+    create: true
+    slug: '{{title}}'
+    identifier_field: 'title'
+    preview_path: 'release/{{title}}'
+    preview_path_date_field: 'createdAt'
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Version', name: 'version', widget: 'string', required: true }
+      - { label: 'Image', name: 'image', widget: 'image', required: false }
+      - {
+          label: 'Published',
+          name: 'published',
+          widget: 'boolean',
+          default: true,
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: false }
+      - { label: 'Created Date', name: 'createdAt', widget: 'datetime' }
+
+  - name: 'config'
+    label: 'Config'
+    files:
+      - file: 'src/content/config.app.json'
+        create: true
+        label: 'Config'
+        name: 'config'
+        fields:
+          - label: 'Avatar'
+            name: 'avatar'
+            widget: 'image'
+            required: true
+          - label: 'Hero Image'
+            name: 'background'
+            widget: 'image'
+            required: false
+          - label: 'Display name'
+            name: 'name'
+            widget: 'string'
+            required: true
+          - label: 'Username'
+            name: 'username'
+            widget: 'string'
+            required: true
+          - label: 'Location'
+            name: 'location'
+            widget: 'string'
+            required: false
+          - label: 'Bio'
+            name: 'bio'
+            widget: 'text'
+            required: false
+          - label: 'Website'
+            name: 'website'
+            widget: 'string'
+            required: false
+          - label: 'Verified'
+            name: 'verified'
+            widget: 'boolean'
+            required: false
+          - label: 'Filters'
+            name: 'filters'
+            widget: 'list'
+            default: ['all']
+          - label: 'Links'
+            name: 'links'
+            widget: 'list'
+            fields:
+              - label: 'Label'
+                name: 'label'
+                widget: 'string'
+              - label: 'Full URL'
+                name: 'link'
+                widget: 'string'
+              - label: 'Icon'
+                name: 'icon'
+                widget: 'string'
