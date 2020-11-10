@@ -34,6 +34,7 @@
     "markdown-it-attrs": "^3.0.3",
     "markdown-it-div": "^1.1.0",
     "prettier": "^2.1.2",
+    "simple-analytics-vue": "^1.1.1",
     "ts-jest": "^26.4.1",
     "vue-jest": "^3.0.4"
   }
