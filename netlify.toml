@@ -24,6 +24,16 @@ status = 301
 to = "/release/5.0"
 
 [[redirects]]
+from = "/blog/announcing-nomie-3-for-ios"
+status = 301
+to = "/release/3.0"
+
+[[redirects]]
+from = "/blog/nomie-3-for-android-progress"
+status = 301
+to = "/release/3.0"
+
+[[redirects]]
 from = "/podcast"
 status = 301
 to = "https://soundcloud.com/nomiepodcast"

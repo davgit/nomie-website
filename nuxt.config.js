@@ -19,6 +19,7 @@ export default {
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
       {
         rel: 'stylesheet',
+        defer: true,
         href:
           'https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css',
       },
