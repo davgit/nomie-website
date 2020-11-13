@@ -58,6 +58,7 @@ button {
 .content h6 {
   margin-bottom: 20px;
   font-weight: bold;
+  line-height: 125%;
 }
 
 .content iframe {

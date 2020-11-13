@@ -9,13 +9,11 @@
         v-for="release in releases"
         :key="release.slug"
       >
-        <h2 class="font-bold text-xl">
-          Nomie v{{release.title}}
-          <span
-            class="text-gray-500 font-normal text-base"
-          >{{displayDate(release.createdAt)}}</span>
-        </h2>
-        <p class="text-gray-600">{{release.description}}</p>
+        <h2 class="font-bold text-xl">Nomie v{{release.title}}</h2>
+        <p class="text-gray-600">
+          <span class="text-gray-500 font-normal text-base">{{displayDate(release.createdAt)}}</span>
+          {{release.description}}
+        </p>
       </nuxt-link>
     </div>
   </Layout>

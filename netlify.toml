@@ -4,22 +4,47 @@ command = "npm run generate"
 publish = "dist"
 
 [[redirects]]
-from = "/blog"
-status = 301
-to = "/release"
-
-[[redirects]]
 from = "/blog/nomie-5-4-0-release"
 status = 301
 to = "/release/5.4"
 
 [[redirects]]
+force = true
 from = "/blog/nomie-5-introduction"
 status = 301
 to = "/release/5.0"
 
 [[redirects]]
+force = true
+from = "/blog/open-sourcing-nomie"
+status = 301
+to = "/release/4.0"
+
+[[redirects]]
+force = true
+from = "blog/original-nomie-blog-post"
+status = 301
+to = "/release/1.0"
+
+[[redirects]]
+force = true
+from = "/blog/01-nomie-4-1-30-release"
+status = 301
+to = "/release/4.1"
+
+[[redirects]]
+force = true
+from = "/blog/nomie-5-3-0-release"
+status = 301
+to = "/release/5.3"
+
+[[redirects]]
 from = "/blog/announcing-nomie-3-for-ios"
+status = 301
+to = "/release/3.0"
+
+[[redirects]]
+from = "/blog/preparing-for-nomie-3"
 status = 301
 to = "/release/3.0"
 
@@ -39,11 +64,21 @@ status = 301
 to = "https://soundcloud.com/nomiepodcast"
 
 [[redirects]]
+from = "/blog"
+status = 301
+to = "/release"
+
+[[redirects]]
+from = "/podcast/*"
+status = 301
+to = "https://soundcloud.com/nomiepodcast"
+
+[[redirects]]
 from = "/opensource"
 status = 301
 to = "https://github.com/open-nomie/nomie"
 
-[[redirects]]
-from = "/*"
-status = 404
-to = "/index.html"
+# [[redirects]]
+# from = "/*"
+# status = 404
+# to = "/index.html"

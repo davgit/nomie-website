@@ -1,3 +1,4 @@
+import RouteGenerator from './src/routes'
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -48,6 +49,13 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
+
+  generate: {
+    async routes() {
+      console.log('🚀 generating routes')
+      return RouteGenerator()
+    },
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
