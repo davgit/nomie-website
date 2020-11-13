@@ -131,9 +131,9 @@ export default {
   methods: {
     back() {
       if (document.referrer.indexOf(window.location.host) !== -1) {
-        this.$router.back()
-      } else {
         this.$router.push('/')
+      } else {
+        this.$router.back()
       }
     },
   },
