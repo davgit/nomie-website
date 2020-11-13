@@ -6,7 +6,7 @@
           class="text-3xl md:text-4xl px-5 md:px-2 leading-auto font-bold text-center"
         >Nomie {{release.title}}</h1>
         <div class="spacer" />
-        <p class="opacity-50 text-center">{{dayjs(release.date).format('ddd DD MMM YYYY')}}</p>
+        <p class="opacity-50 text-center">{{dayjs(release.createdAt).format('ddd DD MMM YYYY')}}</p>
       </div>
       <div
         class="content-wrapper md:rounded-lg text-lg text-gray-800 bg-gray-100 shadow-md md:p-10"

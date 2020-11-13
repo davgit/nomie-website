@@ -59,6 +59,11 @@ status = 301
 to = "https://soundcloud.com/nomiepodcast"
 
 [[redirects]]
+from = "/blog/nomie-4-4-0-video-podcast"
+status = 301
+to = "/release/4.4"
+
+[[redirects]]
 from = "/podcast/*"
 status = 301
 to = "https://soundcloud.com/nomiepodcast"
