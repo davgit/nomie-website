@@ -9,6 +9,11 @@ status = 301
 to = "/release/5.4"
 
 [[redirects]]
+from = "/blog/killing-native"
+status = 301
+to = "/release/4.0"
+
+[[redirects]]
 force = true
 from = "/blog/nomie-5-introduction"
 status = 301
@@ -49,12 +54,32 @@ status = 301
 to = "/release/3.0"
 
 [[redirects]]
+from = "/blog/nomie-3-0-5-release"
+status = 301
+to = "/release/3.0.5"
+
+[[redirects]]
+from = "/blog/nomie-3-0-7-release"
+status = 301
+to = "/release/3.0.7"
+
+[[redirects]]
 from = "/blog/nomie-3-for-android-progress"
 status = 301
 to = "/release/3.0"
 
 [[redirects]]
+from = "/nomie3-help"
+status = 301
+to = "/faq"
+
+[[redirects]]
 from = "/blog/nomie-pro-is-finally-ready"
+status = 301
+to = "/release/3.0"
+
+[[redirects]]
+from = "/blog/nomie-3-0-4-test"
 status = 301
 to = "/release/3.0"
 

@@ -24,7 +24,9 @@ import Layout from '@/components/layout/layout.vue'
 import dayjs from 'dayjs'
 export default {
   async asyncData({ $content, params }) {
-    let release = await $content('releases', params.slug).fetch()
+    let release = await $content('releases', params.slug)
+      .sortBy('createdAt')
+      .fetch()
     return {
       release,
     }
