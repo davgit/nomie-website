@@ -54,6 +54,11 @@ status = 301
 to = "/release/3.0"
 
 [[redirects]]
+from = "/blog/nomie-pro-is-finally-ready"
+status = 301
+to = "/release/3.0"
+
+[[redirects]]
 from = "/podcast"
 status = 301
 to = "https://soundcloud.com/nomiepodcast"

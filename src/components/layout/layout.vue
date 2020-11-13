@@ -5,7 +5,7 @@
         <button
           class="text-3xl px-2 mr-3 text-gray-600"
           style="line-height:100%"
-          @click="$router.back()"
+          @click="back()"
           v-if="showBack"
         >
           <i class="zmdi zmdi-arrow-back" />
@@ -90,6 +90,12 @@
       </div>
       <div class="container mx-auto"></div>
     </footer>
+    <div class="last-footer p-3 text-xs text-gray-700 bg-gray-100">
+      <div class="contain mx-auto flex items-center justify-center">
+        <img src="/images/happy-data-logo.svg" width="100" class="mr-3" />
+        11650 Olio Road, Suite 1000-118 Fishers, IN 46040 USA
+      </div>
+    </div>
 
     <div
       :class="`install-instructions ${$store.state.showInstall ? '_visible' : '_hidden'}`"
@@ -120,6 +126,15 @@ export default {
       default() {
         return false
       },
+    },
+  },
+  methods: {
+    back() {
+      if (document.referrer.indexOf(window.location.host) !== -1) {
+        this.$router.back()
+      } else {
+        this.$router.push('/')
+      }
     },
   },
   data() {
@@ -217,11 +232,15 @@ footer {
   @apply py-6;
   @apply px-5;
   @apply text-gray-900;
+
+  border-top: solid 1px rgba(0, 0, 0, 0.1);
 }
 footer ul li a {
   @apply px-1;
   @apply py-2;
   @apply block;
+}
+footer address {
 }
 footer ul li a:hover {
   @apply text-blue-600;
