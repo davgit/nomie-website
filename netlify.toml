@@ -4,11 +4,6 @@ command = "npm run generate"
 publish = "dist"
 
 [[redirects]]
-from = "/*"
-status = 404
-to = "/index.html"
-
-[[redirects]]
 from = "/blog"
 status = 301
 to = "/release"
@@ -47,3 +42,8 @@ to = "https://soundcloud.com/nomiepodcast"
 from = "/opensource"
 status = 301
 to = "https://github.com/open-nomie/nomie"
+
+[[redirects]]
+from = "/*"
+status = 404
+to = "/index.html"
