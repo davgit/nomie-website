@@ -18,6 +18,12 @@
           />
         </nuxt-link>
         <div class="spacer" />
+        <nuxt-link
+          :title="`v${latest.release.version} is the latest version of Nomie`"
+          v-if="latest && latest.release"
+          :to="`/release/${latest.release.version}`"
+          class="text-blue-600 mr-2"
+        >v{{latest.release.version}}</nuxt-link>
         <ul>
           <li>
             <button
@@ -128,6 +134,11 @@ export default {
       },
     },
   },
+  computed: {
+    latest() {
+      return this.$store.state.latest
+    },
+  },
   methods: {
     back() {
       if (document.referrer.indexOf(window.location.host) !== -1) {
@@ -139,6 +150,15 @@ export default {
   },
   data() {
     return {}
+  },
+  async mounted() {
+    let latest = await this.$content('releases')
+      .sortBy('createdAt', 'desc')
+      .limit(1)
+      .fetch()
+    if (latest) {
+      this.$store.commit('latest/release', latest[0])
+    }
   },
 }
 </script>

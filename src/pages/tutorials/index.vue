@@ -11,10 +11,10 @@
         v-for="tutorial in tutorials"
         :key="tutorial.slug"
       >
-        <h2
-          class="font-bold text-xl text-blue-500 hover:text-blue-600"
-        >{{tutorial.version ? `v${tutorial.version}` : ''}} {{tutorial.title}}</h2>
-        <p>{{tutorial.description}}</p>
+        <h2 class="font-bold text-xl text-blue-500 hover:text-blue-600">{{tutorial.title}}</h2>
+        <p
+          class="text-gray-500"
+        >{{tutorial.version ? `v${tutorial.version}` : ''}} {{tutorial.description}}</p>
       </nuxt-link>
     </div>
   </Layout>
