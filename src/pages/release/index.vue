@@ -1,11 +1,13 @@
 <template>
-  <Layout :showBack="true">
+  <Layout :showBack="true" pageTitle="Nomie Release Notes">
     <div class="contain my-3 pt-3 md:pt-6 md:my-6">
-      <h1 class="text-3xl md:text-5xl px-5 md:px-5 mb-6 leading-auto font-bold">Nomie Release Notes</h1>
+      <div slot="pageTitle" class="page-title">
+        <h1 class="mb-5">Nomie Release Notes</h1>
+      </div>
 
       <nuxt-link
         :to="`/release/${release.slug}`"
-        class="block hover:bg-gray-100 p-2 px-5"
+        class="block hover:bg-gray-100 p-3 px-5"
         v-for="release in releases"
         :key="release.slug"
       >
@@ -30,6 +32,11 @@ export default {
       .fetch()
     return {
       releases,
+    }
+  },
+  head() {
+    return {
+      title: 'Nomie Release Notes',
     }
   },
   methods: {

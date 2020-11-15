@@ -1,10 +1,9 @@
 <template>
-  <Layout :showBack="true">
+  <Layout :showBack="true" pageTitle="Nomie Tutorials">
     <div class="contain my-3 pt-3 md:pt-6 md:my-6">
-      <h1
-        class="text-3xl md:text-5xl px-5 md:px-5 mb-6 leading-auto font-bold text-center"
-      >Nomie Tutorials</h1>
-
+      <div slot="pageTitle" class="page-title mb-6">
+        <h1>Nomie Tutorials</h1>
+      </div>
       <nuxt-link
         :to="`/tutorials/${tutorial.slug}`"
         class="block hover:bg-gray-100 p-2 px-5"

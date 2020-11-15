@@ -32,6 +32,19 @@ body {
   @apply font-light;
 }
 
+.page-title {
+  @apply px-4;
+}
+.page-title h1 {
+  @apply text-3xl;
+  @apply font-bold;
+  @apply leading-10;
+}
+.page-title p {
+  @apply text-sm;
+  @apply text-gray-500;
+}
+
 button {
   transition: all 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8);
 }
@@ -67,6 +80,7 @@ button {
   @apply overflow-hidden;
   @apply shadow-md;
   @apply my-6;
+  @apply w-full;
 }
 
 .content img {

@@ -1,7 +1,7 @@
 <template>
-  <Layout :showBack="true">
-    <div class="contain mx-auto mb-3 md:mb-5">
-      <h1 class="website-title text-4xl lg:text-6xl">Privacy Policy</h1>
+  <Layout :showBack="true" pageTitle="Privacy Policy">
+    <div slot="pageTitle" class="page-title">
+      <h1>Privacy Policy</h1>
     </div>
 
     <div class="primary-content contain content px-5">

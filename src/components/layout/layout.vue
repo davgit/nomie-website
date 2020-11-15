@@ -1,9 +1,9 @@
 <template>
-  <div class="layout--app">
+  <div class="layout--app" :class="{scrolled: scrolled}">
     <header class="p-1">
-      <div class="contain mx-auto px-4">
+      <div class="contain mx-auto px-2 md:px-4 py-3">
         <button
-          class="text-3xl px-2 mr-3 text-gray-600"
+          class="text-2xl md:text-3xl mr-3 text-gray-600"
           style="line-height:100%"
           @click="back()"
           v-if="showBack"
@@ -17,6 +17,10 @@
             style="height:24px; margin-top:-6px;"
           />
         </nuxt-link>
+        <div
+          class="title text-gray-400 show-on-scroll ml-3 text-sm truncate ..."
+          v-if="pageTitle"
+        >{{pageTitle}}</div>
         <div class="spacer" />
         <nuxt-link
           :title="`v${latest.release.version} is the latest version of Nomie`"
@@ -24,23 +28,22 @@
           :to="`/release/${latest.release.version}`"
           class="text-blue-600 mr-2"
         >v{{latest.release.version}}</nuxt-link>
-        <ul>
-          <li>
-            <button
-              v-if="!$store.state.showInstall"
-              class="pill bg-blue-600 text-white px-6 py-2 rounded-full"
-              @click="$store.dispatch('install/show', true)"
-            >Install</button>
-            <button
-              v-if="$store.state.showInstall"
-              class="pill bg-red-600 text-white px-6 py-2 rounded-full"
-              @click="$store.dispatch('install/show', false)"
-            >Done</button>
-          </li>
-        </ul>
+        <button
+          v-if="!$store.state.showInstall"
+          class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
+          @click="$store.dispatch('install/show', true)"
+        >Install</button>
+        <button
+          v-if="$store.state.showInstall"
+          class="pill bg-red-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
+          @click="$store.dispatch('install/show', false)"
+        >Done</button>
       </div>
     </header>
-    <main>
+    <div class="contain mx-auto py-4" v-if="$slots.hasOwnProperty('pageTitle')">
+      <slot class="slot-page-title" name="pageTitle" />
+    </div>
+    <main id="main-content">
       <slot />
     </main>
     <footer>
@@ -127,12 +130,23 @@ export default {
     TabInstall,
   },
   props: {
+    pageTitle: {
+      type: String,
+      default() {
+        return null
+      },
+    },
     showBack: {
       type: Boolean,
       default() {
         return false
       },
     },
+  },
+  data() {
+    return {
+      scrolled: false,
+    }
   },
   computed: {
     latest() {
@@ -148,10 +162,18 @@ export default {
       }
     },
   },
-  data() {
-    return {}
-  },
   async mounted() {
+    const _scrolled = (evt) => {
+      if (evt.top > 40 && !this.scrolled) {
+        this.scrolled = true
+      } else if (this.scrolled && evt.top <= 40) {
+        this.scrolled = false
+      }
+    }
+    if (process.client) {
+      this.$Device.onScroll(_scrolled)
+    }
+
     let latest = await this.$content('releases')
       .sortBy('createdAt', 'desc')
       .limit(1)
@@ -163,11 +185,25 @@ export default {
 }
 </script>
 
+<style>
+.show-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+.scrolled .show-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+</style>
+
 <style scoped>
 /* * {
   border: solid 1px red;
 } */
-main {
+main#main-content {
   @apply pb-6;
   min-height: 70vh;
 }
