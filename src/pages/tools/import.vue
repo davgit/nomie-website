@@ -46,6 +46,7 @@ import TabInstall from '@/components/home/tab-install.vue'
 import TabFree from '@/components/home/tab-free.vue'
 import Screenshots from '@/components/image-scroller/image-scroller.vue'
 import Importers from './importers'
+import downloader from '@/modules/downloader/downloader'
 
 import JsFileDownloader from 'js-file-downloader'
 
@@ -68,8 +69,9 @@ export default Vue.extend({
   },
   computed: {
     importers(): Array<any> {
-      return Object.keys(Importers).map((importKey: string) => {
-        const importer = Importers[importKey]
+      const _importers: any = Importers
+      return Object.keys(_importers).map((importKey: string) => {
+        const importer = _importers[importKey]
         importer.key = importKey
         return importer
       })
@@ -82,16 +84,10 @@ export default Vue.extend({
       this.backup = undefined
     },
     async download() {
-      const dataStr =
-        'data:text/json;charset=utf-8,' +
-        encodeURIComponent(JSON.stringify(this.backup))
-      const downloadEle = document.createElement('a')
       const fileName = `${
         this.importer.name
       }-nomie-${new Date().getTime()}.json`
-      downloadEle.setAttribute('href', dataStr)
-      downloadEle.setAttribute('download', fileName)
-      downloadEle.click()
+      downloader(this.backup, fileName)
     },
     // importerClicked(importer: any) {
     //   this.importer = importer

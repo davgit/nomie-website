@@ -4,15 +4,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import Device from '@/modules/device/device'
-declare module 'vue/types/vue' {
-  interface Vue {
-    $Device: Device
-  }
-}
+<script>
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
 
-export default {}
+import Device from '@/modules/device/device'
+
+export default {
+  async mounted() {
+    let latest = await this.$content('releases')
+      .sortBy('createdAt', 'desc')
+      .limit(1)
+      .fetch()
+    if (latest) {
+      this.$store.commit('latest/release', latest[0])
+    }
+  },
+}
 </script>
 
 <style>
@@ -133,6 +142,8 @@ a:focus {
   @apply overflow-hidden;
   @apply mx-auto;
   @apply rounded-lg;
+
+  max-height: 60vh;
 }
 
 .content a {

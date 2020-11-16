@@ -109,6 +109,11 @@ status = 301
 to = "https://soundcloud.com/nomiepodcast"
 
 [[redirects]]
+from = "/tutorials/creating-an-export-nomie-1-2"
+status = 301
+to = "/tutorials/upgrading-nomie"
+
+[[redirects]]
 from = "/opensource"
 status = 301
 to = "https://github.com/open-nomie/nomie"

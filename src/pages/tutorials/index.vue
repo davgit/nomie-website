@@ -6,11 +6,13 @@
       </div>
       <nuxt-link
         :to="`/tutorials/${tutorial.slug}`"
-        class="block hover:bg-gray-100 p-2 px-5"
+        class="block hover:bg-gray-100 p-4 px-5"
         v-for="tutorial in tutorials"
         :key="tutorial.slug"
       >
-        <h2 class="font-bold text-xl text-blue-500 hover:text-blue-600">{{tutorial.title}}</h2>
+        <h2
+          class="font-bold text-xl text-blue-500 hover:text-blue-600 leading-6 mb-1"
+        >{{tutorial.title}}</h2>
         <p
           class="text-gray-500"
         >{{tutorial.version ? `v${tutorial.version}` : ''}} {{tutorial.description}}</p>

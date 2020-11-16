@@ -9,7 +9,7 @@
         <div class="flex items-center mb-4">
           <main>
             <h1 class>Nomie {{release.title}}</h1>
-            <p>Released: {{dayjs(release.createdAt).format('ddd DD MMM YYYY')}}</p>
+            <p>Released {{dayjs(release.createdAt).fromNow()}}</p>
           </main>
           <div class="spacer" />
           <aside class="flex items-center mb-5 contain mx-auto">

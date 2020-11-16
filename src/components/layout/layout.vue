@@ -173,14 +173,6 @@ export default {
     if (process.client) {
       this.$Device.onScroll(_scrolled)
     }
-
-    let latest = await this.$content('releases')
-      .sortBy('createdAt', 'desc')
-      .limit(1)
-      .fetch()
-    if (latest) {
-      this.$store.commit('latest/release', latest[0])
-    }
   },
 }
 </script>
