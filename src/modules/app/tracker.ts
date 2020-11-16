@@ -16,7 +16,7 @@ export function toTag(str: string) {
 }
 
 export function nid() {
-  return `${new Date().getTime()}${Math.random()}`.toString(16)
+  return new Date().getTime().toString(16)
 }
 
 export class Tracker {

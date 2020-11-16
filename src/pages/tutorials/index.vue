@@ -1,8 +1,8 @@
 <template>
-  <Layout :showBack="true" pageTitle="Nomie Tutorials">
+  <Layout :showBack="true" pageTitle="Tutorials">
     <div class="contain my-3 pt-3 md:pt-6 md:my-6">
-      <div slot="pageTitle" class="page-title mb-6">
-        <h1>Nomie Tutorials</h1>
+      <div slot="pageTitle" class="page-title mb-3">
+        <h1>Tutorials</h1>
       </div>
       <nuxt-link
         :to="`/tutorials/${tutorial.slug}`"
