@@ -39,6 +39,8 @@ body {
 
 .content p {
   @apply font-light;
+  color: var(--text-solid-800);
+  font-size: 95%;
 }
 
 .page-title {
@@ -203,13 +205,6 @@ ul {
 .content ul {
   list-style: disc;
   @apply pl-4;
-}
-
-.content p {
-  @apply my-5;
-
-  color: var(--text-solid-800);
-  font-size: 95%;
 }
 
 .content li {
