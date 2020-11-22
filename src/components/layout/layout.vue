@@ -2,25 +2,20 @@
   <div class="layout--app" :class="{scrolled: scrolled}">
     <header class="p-1">
       <div class="contain mx-auto px-2 md:px-4 py-3">
-        <button
-          class="text-2xl md:text-3xl mr-3 text-gray-600"
-          style="line-height:100%"
-          @click="back()"
-          v-if="showBack"
-        >
+        <button class="text-2xl text-gray-600" @click="back()" v-if="showBack">
           <i class="zmdi zmdi-arrow-back" />
         </button>
-        <nuxt-link class="logo-wrap" to="/" title="Nomie home - privacy life tracking">
+        <nuxt-link class="logo-wrap ml-3" to="/" title="Nomie home - privacy life tracking">
           <img
             src="/images/nomie-wordmark.svg"
             class="header-logo-words"
             alt="nomie wordmark"
-            style=" margin-top:-6px;"
+            style="margin-top:-6px;"
           />
           <img
             src="/images/nomie-color.svg"
             alt="nomie logomark"
-            style="height:24px; margin-top:-6px;"
+            style="height:24px;"
             class="header-logo-mark"
           />
         </nuxt-link>
@@ -34,13 +29,19 @@
           v-if="latest && latest.release"
           :to="`/tutorials`"
           class="nav-emoji mr-2 md:mr-3"
-        >💡</nuxt-link>
+        >
+          💡
+          <span class="hidden md:inline-flex text-sm text-gray-700 ml-1 mr-2">Tutorials</span>
+        </nuxt-link>
         <nuxt-link
           :title="`v${latest.release.version} is the latest version of Nomie`"
           v-if="latest && latest.release"
           :to="`/release/${latest.release.version}`"
           class="nav-emoji mr-3"
-        >🎉</nuxt-link>
+        >
+          🎉
+          <span class="hidden md:inline-flex text-sm text-gray-700 ml-1 mr-2">Latest</span>
+        </nuxt-link>
         <button
           v-if="!$store.state.showInstall"
           class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
@@ -221,8 +222,15 @@ main#main-content {
 }
 
 .logo-wrap {
-  position: relative;
-  height: auto;
+  @apply relative;
+  @apply h-auto;
+  @apply w-auto;
+
+  transition: transform 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  outline: none !important;
+}
+.logo-wrap:active {
+  transform: scale(0.9);
 }
 
 .header-logo-words {
