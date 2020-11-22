@@ -39,16 +39,16 @@
           :title="`v${latest.release.version} is the latest version of Nomie`"
           v-if="latest && latest.release"
           :to="`/release/${latest.release.version}`"
-          class="nav-emoji mr-2 md:mr-3"
+          class="nav-emoji mr-3"
         >🎉</nuxt-link>
         <button
           v-if="!$store.state.showInstall"
-          class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full md:pl-2"
+          class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
           @click="$store.dispatch('install/show', true)"
         >Install</button>
         <button
           v-if="$store.state.showInstall"
-          class="pill bg-red-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full md:pl-2"
+          class="pill bg-red-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
           @click="$store.dispatch('install/show', false)"
         >Done</button>
       </div>
@@ -248,7 +248,7 @@ main#main-content {
   opacity: 1;
 }
 
-.nav-emoji.nuxt-link-exact-active {
+.nav-emoji.nuxt-link-active {
   @apply bg-gray-200;
 }
 

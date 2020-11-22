@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout pageTitle="Tracke your life privately">
     <Screenshots />
 
     <div class="container mx-auto mb-3 md:mb-5">
