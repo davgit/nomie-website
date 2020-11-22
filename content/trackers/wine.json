@@ -1,0 +1,24 @@
+{
+  "type": "tracker",
+  "description": "Track your love of Wine, along with 12% alcohol.",
+  "tracker": {
+    "tag": "wine",
+    "id": "17399f5aaa294139ccb0b72a9835370f",
+    "type": "value",
+    "color": "#EB144C",
+    "math": "sum",
+    "ignore_zeros": false,
+    "uom": "oz",
+    "emoji": "🍷",
+    "default": "8",
+    "score": -1,
+    "goal": null,
+    "one_tap": false,
+    "include": "#alcohol(**0.12)",
+    "note": null,
+    "hidden": false,
+    "label": "Wine"
+  },
+  "created": "2020-11-22T19:26:33.547Z",
+  "version": "5.5.3"
+}

@@ -12,16 +12,15 @@
         :key="tracker.tracker.tag"
       >
         <span class="emoji text-5xl mr-3">{{tracker.tracker.emoji}}</span>
-        <main>
+        <main class="w-full">
           <h2 class="font-bold text-xl text-blue-500 hover:text-blue-600 flex items-center">
             <span class="truncate ...">{{tracker.tracker.label}}</span>
+            <span class="spacer md:hidden" />
             <span
               class="text-gray-500 bg-gray-200 py-1 px-3 text-xs rounded-full font-semibold ml-3"
-            >{{tracker.tracker.type}}</span>
+            >{{displayType(tracker.tracker.type)}}</span>
           </h2>
-          <p
-            class="text-xs text-gray-500"
-          >{{tracker.description || tracker.tracker.picks.join(', ')}}</p>
+          <p class="text-xs text-gray-500">{{description(tracker)}}</p>
         </main>
       </nuxt-link>
     </div>
@@ -30,6 +29,7 @@
 
 <script>
 import Layout from '@/components/layout/layout.vue'
+import { getTypeDetails } from '@/modules/app/tracker-type'
 import dayjs from 'dayjs'
 
 export default {
@@ -40,7 +40,20 @@ export default {
       trackers,
     }
   },
+  computed: {},
   methods: {
+    description(tkrPack) {
+      const tkr = tkrPack.tracker
+      console.log(tkr)
+      if (tkrPack.description) {
+        return tkrPack.description
+      } else if (tkr.picks) {
+        return tkr.picks.join(', ')
+      }
+    },
+    displayType(type) {
+      return getTypeDetails(type).label
+    },
     displayDate(date) {
       return dayjs(date).format('DD MMM YYYY')
     },
