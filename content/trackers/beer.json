@@ -1,6 +1,6 @@
 {
   "type": "tracker",
-  "description": "Track your Cider and Alcohol intake at one time.",
+  "description": "Like beer? Track beer! This will also track a 4.5% alcohol.",
   "tags": [
     "drink",
     "alcohol",
@@ -9,22 +9,22 @@
     "breakfast"
   ],
   "tracker": {
-    "tag": "cider",
-    "id": "c4283ef38c6138b6d8410ecfe3369144",
+    "tag": "beer",
+    "id": "ef38c6138b6d841c42830ecfe3369144",
     "type": "value",
-    "color": "#FF6900",
+    "color": "#F28E1C",
     "math": "sum",
     "ignore_zeros": false,
     "uom": "oz",
-    "emoji": "🍾",
+    "emoji": "🍺",
     "default": "12",
     "score": "-1",
     "score_calc": null,
     "one_tap": false,
-    "include": "#alcohol(**0.05)",
+    "include": "#alcohol(**0.045)",
     "note": null,
     "hidden": false,
-    "label": "Cider"
+    "label": "Beer"
   },
   "created": "2020-11-16T00:44:43.210Z",
   "version": "5.5.2"

@@ -6,7 +6,7 @@
         <p>Looking for items to track? Hopefully this will become more plentiful in the future</p>
       </div>
       <nuxt-link
-        :to="`/tracker/${tracker.slug}`"
+        :to="`/trackers/${tracker.slug}`"
         class="block hover:bg-gray-100 p-2 px-5 flex items-center"
         v-for="tracker in trackers"
         :key="tracker.tracker.tag"

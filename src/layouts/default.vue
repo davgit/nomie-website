@@ -137,6 +137,10 @@ a:focus {
   font-size: 150%;
 }
 
+.content p {
+  @apply mb-2;
+}
+
 .content img {
   @apply shadow-2xl;
   @apply my-6;

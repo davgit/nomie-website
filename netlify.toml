@@ -104,6 +104,11 @@ status = 301
 to = "/release"
 
 [[redirects]]
+from = "/tracker/*"
+status = 301
+to = "/trackers/:splat"
+
+[[redirects]]
 from = "/podcast/*"
 status = 301
 to = "https://soundcloud.com/nomiepodcast"
