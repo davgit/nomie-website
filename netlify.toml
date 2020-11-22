@@ -117,8 +117,3 @@ to = "/tutorials/upgrading-nomie"
 from = "/opensource"
 status = 301
 to = "https://github.com/open-nomie/nomie"
-
-# [[redirects]]
-# from = "/*"
-# status = 404
-# to = "/index.html"
