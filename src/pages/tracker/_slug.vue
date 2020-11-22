@@ -17,6 +17,57 @@
         </button>
       </div>
     </div>
+    <div class="p-3 bg-gray-200">
+      <div class="contain mx-auto">
+        <ul class="details">
+          <li>
+            <strong>Tag</strong>
+            <span>{{tracker.tag}}</span>
+          </li>
+          <li>
+            <strong>Type</strong>
+            <span>{{tracker.type}}</span>
+          </li>
+          <li>
+            <strong>Math</strong>
+            <span>{{tracker.math}}</span>
+          </li>
+          <li>
+            <strong>UOM</strong>
+            <span>{{tracker.uom}}</span>
+          </li>
+          <li v-if="tracker.default">
+            <strong>Default</strong>
+            <span>{{tracker.default}}</span>
+          </li>
+          <li v-if="tracker.one_tap">
+            <strong>One Tap</strong>
+            <span>{{tracker.one_tap}}</span>
+          </li>
+          <li v-if="tracker.includes && tracker.includes.length">
+            <strong>Includes</strong>
+            <span>{{tracker.include}}</span>
+          </li>
+          <li v-if="tracker.score">
+            <strong>Score</strong>
+            <span>{{tracker.score}}</span>
+          </li>
+          <li class="picker-list" v-if="tracker.type == 'picker'">
+            <strong>Pick List</strong>
+            <span>
+              <div class="item-wrap text-sm" v-for="(item,index) in tracker.picks" :key="index">
+                <div
+                  class="font-semibold"
+                  v-if="item.substr(item.length - 1)===':'"
+                >{{item.replace(':','')}}</div>
+                <div v-else class="py-1">{{item}}</div>
+                <hr />
+              </div>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </Layout>
 </template>
 
@@ -63,5 +114,29 @@ export default {
 <style scope>
 .content img {
   margin: 30px 0;
+}
+.details {
+  @apply p-0;
+}
+.details li {
+  @apply flex;
+  @apply items-start;
+  @apply justify-start;
+  @apply w-full;
+  @apply leading-5;
+
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+.details li strong,
+.details li span {
+  @apply block;
+  @apply p-2;
+}
+.details li strong {
+  @apply pr-3;
+  @apply flex-shrink-0;
+  @apply flex-grow-0;
+  width: 120px;
+  border-right: solid 1px rgba(0, 0, 0, 0.1);
 }
 </style>

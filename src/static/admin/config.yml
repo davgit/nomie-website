@@ -10,7 +10,7 @@ collections:
   - name: 'release'
     label: 'Release'
     format: 'frontmatter'
-    folder: 'src/content/releases'
+    folder: 'content/releases'
     create: true
     slug: '{{version}}'
     identifier_field: 'title'
@@ -34,7 +34,7 @@ collections:
   - name: 'config'
     label: 'Config'
     files:
-      - file: 'src/content/config.app.json'
+      - file: 'content/config.app.json'
         create: true
         label: 'Config'
         name: 'config'

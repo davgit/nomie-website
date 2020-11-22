@@ -2,19 +2,21 @@
   <div class="layout--app" :class="{scrolled: scrolled}">
     <header class="p-1">
       <div class="contain mx-auto px-2 md:px-4 py-3">
-        <button
-          class="text-2xl md:text-3xl mr-3 text-gray-600"
-          style="line-height:100%"
-          @click="back()"
-          v-if="showBack"
-        >
+        <button class="text-2xl text-gray-600" @click="back()" v-if="showBack">
           <i class="zmdi zmdi-arrow-back" />
         </button>
-        <nuxt-link to="/" title="Nomie home - privacy life tracking">
+        <nuxt-link class="logo-wrap ml-3" to="/" title="Nomie home - privacy life tracking">
           <img
             src="/images/nomie-wordmark.svg"
+            class="header-logo-words"
             alt="nomie wordmark"
-            style="height:24px; margin-top:-6px;"
+            style="margin-top:-6px;"
+          />
+          <img
+            src="/images/nomie-color.svg"
+            alt="nomie logomark"
+            style="height:24px;"
+            class="header-logo-mark"
           />
         </nuxt-link>
         <div
@@ -23,11 +25,23 @@
         >{{pageTitle}}</div>
         <div class="spacer" />
         <nuxt-link
+          title="Nomie tips and tricks"
+          v-if="latest && latest.release"
+          :to="`/tutorials`"
+          class="nav-emoji mr-2 md:mr-3"
+        >
+          💡
+          <span class="hidden md:inline-flex text-sm text-gray-700 ml-1 mr-2">Tutorials</span>
+        </nuxt-link>
+        <nuxt-link
           :title="`v${latest.release.version} is the latest version of Nomie`"
           v-if="latest && latest.release"
           :to="`/release/${latest.release.version}`"
-          class="text-blue-600 mr-2"
-        >v{{latest.release.version}}</nuxt-link>
+          class="nav-emoji mr-3"
+        >
+          🎉
+          <span class="hidden md:inline-flex text-sm text-gray-700 ml-1 mr-2">Latest</span>
+        </nuxt-link>
         <button
           v-if="!$store.state.showInstall"
           class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
@@ -50,6 +64,7 @@
       <div class="contain mx-auto flex flex-col md:flex-row">
         <div class="flex flex-col w-full md:w-4/12 text-center py-4">
           <img src="/images/nomie-color.svg" class="mx-auto my-3" width="120" alt="Nomie logo mark" />
+
           <h1 class="font-bold text-lg">Get to know yourself</h1>
           <p
             class="text-sm leading-4 mt-4 opacity-50"
@@ -198,6 +213,51 @@ export default {
 main#main-content {
   @apply pb-6;
   min-height: 70vh;
+}
+.nav-emoji {
+  @apply px-2;
+  @apply py-1;
+  @apply rounded-full;
+  @apply text-lg;
+}
+
+.logo-wrap {
+  @apply relative;
+  @apply h-auto;
+  @apply w-auto;
+
+  transition: transform 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  outline: none !important;
+}
+.logo-wrap:active {
+  transform: scale(0.9);
+}
+
+.header-logo-words {
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(0);
+  opacity: 1;
+  min-width: 90px;
+  max-width: 90px;
+}
+.header-logo-mark {
+  opacity: 0;
+}
+.scrolled .header-logo-words {
+  transition: all 0.2s ease-in-out;
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+.scrolled .header-logo-mark {
+  opacity: 1;
+}
+
+.nav-emoji.nuxt-link-active {
+  @apply bg-gray-200;
 }
 
 .install-instructions {

@@ -1,0 +1,31 @@
+{
+  "type": "tracker",
+  "description": "Track your Cider and Alcohol intake at one time.",
+  "tags": [
+    "drink",
+    "alcohol",
+    "dinner",
+    "vice",
+    "breakfast"
+  ],
+  "tracker": {
+    "tag": "cider",
+    "id": "c4283ef38c6138b6d8410ecfe3369144",
+    "type": "value",
+    "color": "#FF6900",
+    "math": "sum",
+    "ignore_zeros": false,
+    "uom": "oz",
+    "emoji": "🍺",
+    "default": "12",
+    "score": "-1",
+    "score_calc": null,
+    "one_tap": false,
+    "include": "#alcohol(**0.05)",
+    "note": null,
+    "hidden": false,
+    "label": "Cider"
+  },
+  "created": "2020-11-16T00:44:43.210Z",
+  "version": "5.5.2"
+}

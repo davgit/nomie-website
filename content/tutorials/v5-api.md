@@ -1,6 +1,6 @@
 ---
 author: Brandon
-title: 'Using the Nomie v5 API'
+title: "Setting up Nomie's API"
 description: 'Step up your tracking game with automated tracking'
 createdAt: '2020-11-09T00:14:41.516Z'
 version: '5'
@@ -10,6 +10,13 @@ slug: 'v5-api'
 # What's the API?
 
 An API ("application programming interface") is how two programs can talk to each other remotely. Nomie's API lets you send data from external apps / websites / services into Nomie. **Nomie's API DOES NOT send data OUT of the app**, only for bringing data in (for security purposes).
+
+## Rules of the API
+
+- You have 10 slots available at any time. (10 slot limitation cannot be increased - for now)
+- One note saved to the API fills one slot.
+- Auto Import will clear out the slots once all have been imported.
+- The API will return an error when no more slots are available.
 
 ### Enabling your Nomie API.
 
@@ -83,10 +90,3 @@ Once you've successfully pushed a note into the API, tap the "Captured" tab, and
 **Pro Tip**: having to manually accept each log is annoying. Enable Auto Accept to automatically import logs each time you launch nomie.
 
 ![](https://shareking.s3.amazonaws.com/Screen-Shot-2020-11-09-21-25-02.63-1604975115.png)
-
-## Rules of the API
-
-- You have 10 slots available at any time.
-- One note saved to the API fills one slot.
-- Auto Import will clear out the slots once all have been imported.
-- The API will return an error when no more slots are available.
