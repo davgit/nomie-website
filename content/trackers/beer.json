@@ -1,0 +1,31 @@
+{
+  "type": "tracker",
+  "description": "Like beer? Track beer! This will also track a 4.5% alcohol.",
+  "tags": [
+    "drink",
+    "alcohol",
+    "dinner",
+    "vice",
+    "breakfast"
+  ],
+  "tracker": {
+    "tag": "beer",
+    "id": "ef38c6138b6d841c42830ecfe3369144",
+    "type": "value",
+    "color": "#F28E1C",
+    "math": "sum",
+    "ignore_zeros": false,
+    "uom": "oz",
+    "emoji": "🍺",
+    "default": "12",
+    "score": "-1",
+    "score_calc": null,
+    "one_tap": false,
+    "include": "#alcohol(**0.045)",
+    "note": null,
+    "hidden": false,
+    "label": "Beer"
+  },
+  "created": "2020-11-16T00:44:43.210Z",
+  "version": "5.5.2"
+}

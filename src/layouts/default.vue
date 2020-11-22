@@ -29,6 +29,10 @@ body {
   --color-primary: #319ed7;
 }
 
+/* * {
+  border: solid 1px red !important;
+} */
+
 .contain {
   @apply mx-auto;
 
@@ -69,18 +73,14 @@ button {
   @apply flex-shrink;
 }
 
-.content p,
-.content ul,
-.content ol {
-  margin-bottom: 20px;
-}
 .content h1,
 .content h2,
 .content h3,
 .content h4,
 .content h5,
 .content h6 {
-  margin-bottom: 20px;
+  margin-top: 24px;
+  margin-bottom: 6px;
   font-weight: bold;
   line-height: 125%;
 }
@@ -119,7 +119,6 @@ a:focus {
   @apply py-6;
   @apply px-5;
   @apply pt-3;
-
   overflow-x: hidden;
 }
 .content a {
@@ -136,6 +135,10 @@ a:focus {
 
 .content h1 {
   font-size: 150%;
+}
+
+.content p {
+  @apply mb-2;
 }
 
 .content img {

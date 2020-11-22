@@ -4,7 +4,7 @@
     :title="`Nomie Release v${release.title}`"
     :pageTitle="`Version ${release.title}`"
   >
-    <div class="contain my-3 pt-3 md:pt-6 md:my-6">
+    <div class="contain my-3 pt-3 md:pt-6 md:my-6 bg-white">
       <div slot="pageTitle" class="page-title">
         <div class="flex items-center mb-4">
           <main>
@@ -39,9 +39,7 @@
         </div>
       </div>
 
-      <div
-        class="content-wrapper md:rounded-lg text-lg text-gray-800 bg-gray-100 shadow-md px-1 py-3 md:p-10"
-      >
+      <div class="content-wrapper md:rounded-lg text-lg text-gray-800 mt-6">
         <div class="content contain mx-auto">
           <nuxt-content :document="release"></nuxt-content>
         </div>
