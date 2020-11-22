@@ -10,11 +10,18 @@
         >
           <i class="zmdi zmdi-arrow-back" />
         </button>
-        <nuxt-link to="/" title="Nomie home - privacy life tracking">
+        <nuxt-link class="logo-wrap" to="/" title="Nomie home - privacy life tracking">
           <img
             src="/images/nomie-wordmark.svg"
+            class="header-logo-words"
             alt="nomie wordmark"
+            style=" margin-top:-6px;"
+          />
+          <img
+            src="/images/nomie-color.svg"
+            alt="nomie logomark"
             style="height:24px; margin-top:-6px;"
+            class="header-logo-mark"
           />
         </nuxt-link>
         <div
@@ -23,19 +30,25 @@
         >{{pageTitle}}</div>
         <div class="spacer" />
         <nuxt-link
+          title="Nomie tips and tricks"
+          v-if="latest && latest.release"
+          :to="`/tutorials`"
+          class="nav-emoji mr-2 md:mr-3"
+        >💡</nuxt-link>
+        <nuxt-link
           :title="`v${latest.release.version} is the latest version of Nomie`"
           v-if="latest && latest.release"
           :to="`/release/${latest.release.version}`"
-          class="text-blue-600 mr-2"
-        >v{{latest.release.version}}</nuxt-link>
+          class="nav-emoji mr-2 md:mr-3"
+        >🎉</nuxt-link>
         <button
           v-if="!$store.state.showInstall"
-          class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
+          class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full md:pl-2"
           @click="$store.dispatch('install/show', true)"
         >Install</button>
         <button
           v-if="$store.state.showInstall"
-          class="pill bg-red-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
+          class="pill bg-red-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full md:pl-2"
           @click="$store.dispatch('install/show', false)"
         >Done</button>
       </div>
@@ -50,6 +63,7 @@
       <div class="contain mx-auto flex flex-col md:flex-row">
         <div class="flex flex-col w-full md:w-4/12 text-center py-4">
           <img src="/images/nomie-color.svg" class="mx-auto my-3" width="120" alt="Nomie logo mark" />
+
           <h1 class="font-bold text-lg">Get to know yourself</h1>
           <p
             class="text-sm leading-4 mt-4 opacity-50"
@@ -198,6 +212,44 @@ export default {
 main#main-content {
   @apply pb-6;
   min-height: 70vh;
+}
+.nav-emoji {
+  @apply px-2;
+  @apply py-1;
+  @apply rounded-full;
+  @apply text-lg;
+}
+
+.logo-wrap {
+  position: relative;
+  height: auto;
+}
+
+.header-logo-words {
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(0);
+  opacity: 1;
+  min-width: 90px;
+  max-width: 90px;
+}
+.header-logo-mark {
+  opacity: 0;
+}
+.scrolled .header-logo-words {
+  transition: all 0.2s ease-in-out;
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+.scrolled .header-logo-mark {
+  opacity: 1;
+}
+
+.nav-emoji.nuxt-link-exact-active {
+  @apply bg-gray-200;
 }
 
 .install-instructions {

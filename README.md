@@ -1,6 +1,8 @@
-# nomie-website-2020
+# Nomie Website 2020-2021
 
-## Build Setup
+This repo contains the website for [Nomie](https://nomie.app) the open source life tracker. It is powered by [Nuxt](https://nuxtjs.org), hosted at [Netlify](https://netlify.com).
+
+## Installing
 
 ```bash
 # install dependencies
