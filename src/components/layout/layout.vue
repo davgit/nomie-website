@@ -80,7 +80,10 @@
               <nuxt-link to="/tutorials">Tutorials</nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/privacy">Privacy Policy</nuxt-link>
+              <nuxt-link to="/trackers" title="Browse Nomie Trackers">
+                Library
+                <span class="badge xs">beta</span>
+              </nuxt-link>
             </li>
           </ul>
         </div>
@@ -107,7 +110,7 @@
             </li>
 
             <li>
-              <a href="#">&copy; 2020</a>
+              <nuxt-link to="/privacy">Privacy Policy</nuxt-link>
             </li>
           </ul>
         </div>
@@ -117,7 +120,8 @@
     <div class="last-footer p-3 text-xs text-gray-700 bg-gray-100">
       <div class="contain mx-auto flex items-center justify-center">
         <img src="/images/happy-data-logo.svg" width="100" class="mr-3" />
-        11650 Olio Road, Suite 1000-118 Fishers, IN 46040 USA
+        11650 Olio Road, Suite 1000-118 Fishers, IN 46040 USA.
+        &copy; 2020
       </div>
     </div>
 
@@ -254,6 +258,15 @@ main#main-content {
 
 .scrolled .header-logo-mark {
   opacity: 1;
+}
+
+.badge {
+  @apply text-xs;
+  @apply text-white;
+  @apply bg-blue-600;
+  @apply rounded-lg;
+  @apply py-1;
+  @apply px-2;
 }
 
 .nav-emoji.nuxt-link-active {
