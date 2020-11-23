@@ -119,6 +119,8 @@ a:focus {
   @apply py-6;
   @apply px-5;
   @apply pt-3;
+  @apply text-base;
+
   overflow-x: hidden;
 }
 .content a {
@@ -130,7 +132,7 @@ a:focus {
 .content h4,
 .content h5,
 .content h6 {
-  font-weight: bold;
+  @apply font-semibold;
 }
 
 .content h1 {

@@ -14,11 +14,11 @@ export interface TrackerTypesConfig {
 const types: TrackerTypesConfig = {
   tick: {
     emoji: '☝️',
-    label: 'Tally Tracker',
+    label: 'Tally',
   },
   value: {
     emoji: '🔢',
-    label: 'Number Input',
+    label: 'Number',
   },
   range: {
     emoji: '🎚',
@@ -26,7 +26,7 @@ const types: TrackerTypesConfig = {
   },
   picker: {
     emoji: '✅',
-    label: 'Pick from a List',
+    label: 'Multi Select',
   },
   timer: {
     emoji: '⏲',

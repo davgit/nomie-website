@@ -34,8 +34,8 @@
           <span class="hidden md:inline-flex text-sm text-gray-700 ml-1 mr-2">Tutorials</span>
         </nuxt-link>
         <nuxt-link
-          :title="`v${latest.release.version} is the latest version of Nomie`"
           v-if="latest && latest.release"
+          :title="`v${latest.release.version} is the latest version of Nomie`"
           :to="`/release/${latest.release.version}`"
           class="nav-emoji mr-3"
         >
@@ -43,10 +43,10 @@
           <span class="hidden md:inline-flex text-sm text-gray-700 ml-1 mr-2">Latest</span>
         </nuxt-link>
         <button
-          v-if="!$store.state.showInstall"
+          v-if="!$store.state.showInstall && latest && latest.release"
           class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
           @click="$store.dispatch('install/show', true)"
-        >Install</button>
+        >v{{latest.release.version}}</button>
         <button
           v-if="$store.state.showInstall"
           class="pill bg-red-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
@@ -279,7 +279,7 @@ main#main-content {
   @apply left-0;
   @apply w-screen;
   @apply h-screen;
-  @apply z-40;
+  @apply z-50;
   @apply flex;
   @apply items-center;
   @apply justify-center;
