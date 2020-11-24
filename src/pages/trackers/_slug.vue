@@ -23,7 +23,7 @@
         </button>
       </div>
     </div>
-    <div class="p-3 bg-gray-200">
+    <div class="p-3 bg-gray-200 contain mx-auto md:rounded-md">
       <div class="contain mx-auto">
         <ul class="details mx-2">
           <li>
@@ -137,7 +137,6 @@ export default {
   async asyncData({ $content, params }) {
     const payload = await $content('trackers', params.slug).fetch()
     const tracker = new Tracker(payload.tracker)
-    console.log({ payload })
     return {
       tracker,
       payload,
@@ -183,5 +182,8 @@ export default {
   @apply leading-5;
   @apply py-3;
   border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+.details li:last-child {
+  border-bottom: none;
 }
 </style>

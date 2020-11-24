@@ -38,19 +38,20 @@ export default {
   @apply shadow-lg;
   @apply border;
   @apply border-gray-200;
-  
+  @apply bg-white;
+
   border-radius: calc(var(--size) * 0.32);
   width: var(--size);
   height: var(--size);
 }
 .classic-button .emoji {
   font-style: normal;
-  font-size:calc(var(--size) * 0.6);
+  font-size: calc(var(--size) * 0.6);
 }
 .classic-button label {
   @apply mt-1;
   @apply block;
   @apply text-gray-600;
-  font-size:calc(var(--size) * 0.17);
+  font-size: calc(var(--size) * 0.17);
 }
 </style>

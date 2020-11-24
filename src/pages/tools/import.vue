@@ -131,6 +131,7 @@ export default Vue.extend({
   border-bottom-right-radius: 0;
   border-bottom: solid 1px #fff;
   margin-bottom: -1px;
+  outline: none !important;
 }
 .tabs .tab.active {
   @apply rounded-full;
