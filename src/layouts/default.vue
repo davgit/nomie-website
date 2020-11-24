@@ -41,6 +41,31 @@ body {
   max-height: auto;
 }
 
+.gap {
+  height: 6px;
+  width: 6px;
+}
+.gap-1 {
+  height: 12px;
+  width: 12px;
+}
+.gap-2 {
+  height: 18px;
+  width: 18px;
+}
+.gap-3 {
+  height: 18px;
+  width: 18px;
+}
+.gap-4 {
+  height: 24px;
+  width: 24px;
+}
+.gap-5 {
+  height: 30px;
+  width: 30px;
+}
+
 .content p {
   @apply font-light;
   color: var(--text-solid-800);
@@ -79,7 +104,7 @@ button {
 .content h4,
 .content h5,
 .content h6 {
-  margin-bottom: 6px;
+  @apply mb-3;
   font-weight: bold;
   line-height: 125%;
 }
@@ -137,8 +162,9 @@ a:focus {
   @apply text-base;
   overflow-x: hidden;
 }
-.content a {
-  @apply text-blue-600;
+.content a,
+.content-block a {
+  @apply text-blue-500;
 }
 .content h1,
 .content h2,
@@ -194,14 +220,13 @@ a:focus {
 
 .content code {
   @apply text-sm;
-  @apply bg-blue-100;
-  @apply text-blue-900;
+  @apply bg-gray-900;
 }
 
 .content pre {
   display: block;
   overflow-x: scroll;
-  @apply bg-blue-900;
+  @apply bg-gray-900;
   @apply text-gray-200;
   @apply rounded-lg;
   @apply p-3;
@@ -213,13 +238,18 @@ a:focus {
 }
 
 .content pre code {
-  @apply bg-blue-900;
-  @apply text-gray-200;
+  @apply bg-gray-900;
 }
 
 .content ol,
-ul {
+.content ul {
   @apply p-3;
+  @apply ml-3;
+  @apply mb-4;
+}
+
+code {
+  text-shadow: none;
 }
 
 .content ul {

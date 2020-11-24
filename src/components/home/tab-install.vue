@@ -1,6 +1,14 @@
 <template>
-  <div class="content tab-install text-center text-base">
-    <div class="pills mb-2">
+  <div class="tab-install text-center text-base">
+    <h2
+      class="leading-auto mb-1 text-center text-2xl md:text-3xl"
+    >Install to {{tab==='desktop' ? 'Computer' : 'Homescreen'}}</h2>
+
+    <h3
+      class="leading-6 text-center mx-1 text-base text-gray-400 mb-6 md:mb-10"
+    >Nomie is best/safest when installed on as a WebApp.</h3>
+
+    <div class="pills mb-6 md:mb-10">
       <button :class="{active:tab=='ios'}" @click="tab='ios'">iOS</button>
       <button :class="{active:tab=='android'}" @click="tab='android'">Android</button>
       <button :class="{active:tab=='desktop'}" @click="tab='desktop'">Desktop</button>
@@ -60,8 +68,6 @@
         <li>Select "Install"</li>
       </ol>
     </div>
-
-    <p class="opacity-50 text-sm">Nomie 5 is best installed from your homescreen.</p>
   </div>
 </template>
 

@@ -5,7 +5,7 @@
     :pageTitle="`Version ${release.title}`"
   >
     <SectionHeader
-      sectionTitle="Release Notes"
+      sectionTitle="🎉  Release Notes"
       sectionLink="/release"
       :pageTitle="`v${release.version}`"
     >
@@ -28,7 +28,7 @@
 
     <div class="contain bg-white flex">
       <div class="content md:w-9/12">
-        <nuxt-content class="px-2 py-5" :document="release"></nuxt-content>
+        <nuxt-content class="p-5 md:px-2" :document="release"></nuxt-content>
       </div>
       <div class="hidden md:block md:w-3/12 p-4 text-sm sticky top-0">
         <h4 class="font-semibold px-2 my-2">TOC</h4>

@@ -1,10 +1,10 @@
 <template>
   <Layout :showBack="true" pageTitle="Nomie Release Notes">
-    <SectionHeader sectionTitle="Release Notes" sectionLink="/release" />
+    <SectionHeader sectionTitle="🎉  Release Notes" sectionLink="/release" />
     <div class="contain my-3">
       <nuxt-link
         :to="`/release/${release.slug}`"
-        class="block hover:bg-gray-100 p-3 hover:text-blue-600"
+        class="block hover:bg-gray-100 p-3 px-4 active:bg-blue-200"
         v-for="release in releases"
         :key="release.slug"
       >

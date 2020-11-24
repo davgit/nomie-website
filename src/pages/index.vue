@@ -1,5 +1,7 @@
 <template>
   <Layout pageTitle="Tracke your life privately">
+    <div class="gap-4"></div>
+
     <Screenshots />
 
     <div class="container mx-auto mb-3 md:mb-5">
@@ -35,7 +37,7 @@
         </li>
       </ul>
       <div class="tab-content">
-        <main class="container mx-auto p-0 md:p-10 md:text-3xl bg-gray-900">
+        <main class="container mx-auto p-5 md:p-10 md:text-3xl bg-gray-900" style="min-height:60vh">
           <TabPrivacy v-if="tab == 'privacy'" />
           <TabInstall v-else-if="tab == 'install'" />
           <TabFree v-else-if="tab == 'price'" />

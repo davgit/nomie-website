@@ -1,9 +1,8 @@
 <template>
   <Layout :showBack="true" :title="`${faq.title}`">
-    <div class="contain my-3 pt-3 md:pt-6 md:my-6">
-      <h1
-        class="text-4xl md:text-4xl leading-auto font-bold pl-5 mb-4 flex items-center"
-      >{{faq.title}}</h1>
+    <SectionHeader sectionTitle="FAQ" sectionLink="/faq" :pageTitle="faq.title" />
+    <div class="contain mx-auto p-5 md:px-2">
+      <h1 class="text-3xl md:text-4xl leading-auto font-bold mb-4 flex items-center">{{faq.title}}</h1>
       <div
         v-if="faq.obsolete"
         class="bg-red-200 inline-flex py-1 text-red-600 ml-5 rounded-full px-4 py-0 text-xs mr-3 flex-grow-0 flex-shrink-0"

@@ -7,8 +7,8 @@
         class="text-2xl md:text-4xl px-5 md:px-2 mb-2 md:mb-5 leading-auto font-bold text-center"
       >{{tutorial.title}}</h1>
 
-      <div class="content md:rounded-lg text-lg px-5 text-gray-800">
-        <nuxt-content :document="tutorial"></nuxt-content>
+      <div class="content md:rounded-lg text-lg text-gray-800">
+        <nuxt-content :document="tutorial" class="p-5 md:px-2"></nuxt-content>
       </div>
     </div>
   </Layout>

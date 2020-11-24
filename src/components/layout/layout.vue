@@ -2,7 +2,7 @@
   <div class="layout--app" :class="{scrolled: scrolled, mobile: mobile}">
     <header>
       <div class="contain mx-auto px-4 md:px-2 flex items-center header-container">
-        <button class="bg-transparent menu-button" v-if="mobile" @click="toggleMenu()">
+        <button class="bg-transparent menu-button" v-show="mobile" @click="toggleMenu()">
           <i :class="`zmdi ${showMenu ? 'zmdi-close' : 'zmdi-menu'}`"></i>
         </button>
 
@@ -39,6 +39,12 @@
             :to="`/latest`"
             class="nav-link hover:underline"
           >Latest Version</nuxt-link>
+          <nuxt-link
+            v-show="mobile"
+            :title="`Frequently Asked Questions`"
+            :to="`/faq`"
+            class="nav-link hover:underline"
+          >Fuq?</nuxt-link>
           <a
             v-show="mobile"
             :title="`GitHub`"
@@ -211,12 +217,16 @@ export default {
         this.scrolled = false
       }
     }
-    this.mobile = this.$Device.size.sm || this.$Device.size.xs
     if (process.client) {
-      this.$Device.onScroll(_scrolled)
-      this.$Device.onResize(() => {
-        this.mobile = this.$Device.size.sm || this.$Device.size.xs
-      })
+      this.mobile = this.$Device.size.sm || this.$Device.size.xs
+      if (process.client) {
+        this.$Device.onScroll(_scrolled)
+        this.$Device.onResize(() => {
+          this.mobile = this.$Device.size.sm || this.$Device.size.xs
+        })
+      }
+    } else {
+      this.mobile = false
     }
   },
 }
@@ -285,8 +295,7 @@ main#main-content {
 
 .menu-items.fullscreen._hidden {
   transition: all 0.2s ease-in;
-  transform: translateY(-80px);
-  opacity: 0;
+  transform: translateY(100vh);
 }
 .menu-items.fullscreen._visible {
   transition: all 0.3s ease-in-out;
