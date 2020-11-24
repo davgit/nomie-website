@@ -4,7 +4,13 @@
     :title="`${tracker.emoji} ${tracker.label} tracking in Nomie`"
     :pageTitle="`${tracker.emoji} ${tracker.label}`"
   >
-    <div slot="pageTitle" class="page-title flex items-center">
+    <SectionHeader
+      sectionTitle="Tracker Library"
+      sectionLink="/trackers"
+      :pageTitle="`${tracker.emoji} ${tracker.label}`"
+    ></SectionHeader>
+
+    <div class="p-3 flex items-center contain mx-auto">
       <classic-button :label="tracker.label" :emoji="tracker.emoji" class="mr-4" />
       <div v-if="payload">
         <div class="text-gray-600 text-md">{{payload.description}}</div>
@@ -19,7 +25,7 @@
     </div>
     <div class="p-3 bg-gray-200">
       <div class="contain mx-auto">
-        <ul class="details">
+        <ul class="details mx-2">
           <li>
             <strong>Tag</strong>
             <span>{{tracker.tag}}</span>
@@ -53,22 +59,19 @@
             <span>{{tracker.score}}</span>
           </li>
           <li class="picker-list overflow-hidden" v-if="tracker.type == 'picker'">
-            <strong>Items</strong>
-            <span>
+            <div
+              class="item-wrap text-sm truncate"
+              v-for="(item,index) in tracker.picks"
+              :key="index"
+            >
               <div
-                class="item-wrap text-sm truncate"
-                v-for="(item,index) in tracker.picks"
-                :key="index"
-              >
-                <div
-                  class="font-semibold mt-2 mb-1 text-lg"
-                  v-if="item.trim().substr(item.length - 1)===':'"
-                >{{item.trim().replace(':','')}}</div>
-                <div v-else class="py-1">
-                  <h3 class="truncate">{{item}}</h3>
-                </div>
+                class="font-semibold mt-2 mb-1 text-lg"
+                v-if="item.trim().substr(item.length - 1)===':'"
+              >{{item.trim().replace(':','')}}</div>
+              <div v-else class="py-1 text-gray-700">
+                <h3 class="truncate">{{item}}</h3>
               </div>
-            </span>
+            </div>
           </li>
         </ul>
       </div>
@@ -176,27 +179,9 @@ export default {
   @apply p-0;
 }
 .details li {
-  @apply flex;
-  @apply items-start;
-  @apply justify-start;
   @apply w-full;
   @apply leading-5;
-
+  @apply py-3;
   border-bottom: solid 1px rgba(0, 0, 0, 0.1);
-}
-.details li strong,
-.details li span {
-  @apply block;
-  @apply p-2;
-}
-.details li strong {
-  @apply pr-3;
-  @apply flex-shrink-0;
-  @apply flex-grow-0;
-  width: 100px;
-  border-right: solid 1px rgba(0, 0, 0, 0.1);
-}
-.details .item-wrap {
-  @apply truncate;
 }
 </style>

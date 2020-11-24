@@ -1,24 +1,27 @@
 <template>
   <Layout :showBack="true" pageTitle="Tutorials">
-    <div class="contain my-3 pt-3 md:pt-6 md:my-6">
-      <div slot="pageTitle" class="page-title mb-3">
-        <h1>Nomie Tutorials</h1>
-        <p>Let's get this filled with all sorts of user contributed tips and tricks</p>
-      </div>
+    <SectionHeader sectionTitle="Tutorials" sectionLink="/tutorials" />
+    <div class="contain my-3 pt-3">
       <nuxt-link
         :to="`/tutorials/${tutorial.slug}`"
-        class="block hover:bg-gray-100 p-4 px-5"
+        class="block hover:bg-gray-100 py-2 px-5 flex items-center"
         v-for="tutorial in tutorials"
         :key="tutorial.slug"
       >
-        <h2
-          class="font-bold text-xl text-blue-500 hover:text-blue-600 leading-6 mb-1"
-        >{{tutorial.title}}</h2>
-        <p class="text-gray-500">
-          <strong class="text-gray-700">By {{tutorial.author}}</strong>
-          <span class="text-gray-600">{{tutorial.version ? `v${tutorial.version}` : ''}}</span>
-          {{tutorial.description}}
-        </p>
+        <div class="flex-grow-0 flex-shrink-0 text-5xl mr-5">{{tutorial.emoji || '⚪️'}}</div>
+        <main>
+          <h2
+            class="font-bold text-xl text-blue-500 hover:text-blue-600 leading-6 mb-1"
+          >{{tutorial.title}}</h2>
+          <p class="text-gray-500">
+            <strong class="text-gray-700">By {{tutorial.author}}</strong>
+            <span
+              class="text-gray-600"
+              v-if="tutorial && tutorial.version"
+            >{{tutorial.version ? `v${tutorial.version}` : ''}}</span>
+            {{tutorial.description}}
+          </p>
+        </main>
       </nuxt-link>
     </div>
   </Layout>
@@ -26,13 +29,25 @@
 
 <script>
 import Layout from '@/components/layout/layout.vue'
+import SectionHeader from '@/components/section-header/section-header'
 import dayjs from 'dayjs'
 export default {
+  components: {
+    SectionHeader,
+  },
   async asyncData({ $content, params }) {
     let tutorials = await $content('tutorials')
       .where({ published: { $ne: false } })
       .sortBy('createdAt', 'desc')
-      .only(['slug', 'title', 'author', 'version', 'createdAt', 'description'])
+      .only([
+        'slug',
+        'title',
+        'author',
+        'version',
+        'createdAt',
+        'description',
+        'emoji',
+      ])
       .fetch()
     return {
       tutorials,

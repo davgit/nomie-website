@@ -5,6 +5,7 @@ description: 'Ready to move to the newest version?'
 createdAt: '2020-11-14T00:14:41.516Z'
 version: '5'
 slug: 'upgrading-nomie'
+emoji: '☝️'
 ---
 
 You need to first export your data out of your current version of Nomie, and Import it into the latest version. All version of Nomie can generate a Backup file that can be imported into the latest version.

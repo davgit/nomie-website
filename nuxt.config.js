@@ -49,7 +49,15 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
-
+  tailwindcss: {
+    config: {
+      colors: {
+        blue: {
+          600: '#2B94D1',
+        },
+      },
+    },
+  },
   generate: {
     async routes() {
       console.log('🚀 generating routes')

@@ -79,10 +79,28 @@ button {
 .content h4,
 .content h5,
 .content h6 {
-  margin-top: 24px;
   margin-bottom: 6px;
   font-weight: bold;
   line-height: 125%;
+}
+
+.hide-no-scroll {
+  transition: all 0.2s ease-in-out;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.scrolled .hide-no-scroll {
+  transition: all 0.2s ease-in-out;
+  display: inline-flex !important;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+  height: auto;
+  width: auto;
 }
 
 .content iframe {
@@ -116,11 +134,7 @@ a:focus {
 }
 
 .content {
-  @apply py-6;
-  @apply px-5;
-  @apply pt-3;
   @apply text-base;
-
   overflow-x: hidden;
 }
 .content a {
@@ -140,7 +154,8 @@ a:focus {
 }
 
 .content p {
-  @apply mb-2;
+  @apply mb-5;
+  @apply leading-6;
 }
 
 .content img {

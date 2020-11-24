@@ -1,57 +1,64 @@
 <template>
-  <div class="layout--app" :class="{scrolled: scrolled}">
-    <header class="p-1">
-      <div class="contain mx-auto px-2 md:px-4 py-3">
-        <button class="text-2xl text-gray-600" @click="back()" v-if="showBack">
-          <i class="zmdi zmdi-arrow-back" />
+  <div class="layout--app" :class="{scrolled: scrolled, mobile: mobile}">
+    <header>
+      <div class="contain mx-auto px-4 md:px-2 flex items-center header-container">
+        <button class="bg-transparent menu-button" v-if="mobile" @click="toggleMenu()">
+          <i :class="`zmdi ${showMenu ? 'zmdi-close' : 'zmdi-menu'}`"></i>
         </button>
-        <nuxt-link class="logo-wrap ml-3" to="/" title="Nomie home - privacy life tracking">
+
+        <nuxt-link to="/" title="Nomie home - privacy life tracking">
           <img
-            src="/images/nomie-wordmark.svg"
-            class="header-logo-words"
+            src="/images/nomie-wordmark-white.svg"
+            style="height:20px; margin-top:-6px;"
             alt="nomie wordmark"
-            style="margin-top:-6px;"
-          />
-          <img
-            src="/images/nomie-color.svg"
-            alt="nomie logomark"
-            style="height:24px;"
-            class="header-logo-mark"
           />
         </nuxt-link>
+
         <div
-          class="title text-gray-400 show-on-scroll ml-3 text-sm truncate ..."
-          v-if="pageTitle"
-        >{{pageTitle}}</div>
-        <div class="spacer" />
-        <nuxt-link
-          title="Nomie tips and tricks"
-          v-if="latest && latest.release"
-          :to="`/tutorials`"
-          class="nav-emoji mr-2 md:mr-3"
+          :class="`menu-items ${mobile ? 'fullscreen' : ''} ${showMenu ? '_visible' : '_hidden'}`"
         >
-          💡
-          <span class="hidden md:inline-flex text-sm text-gray-700 ml-1 mr-2">Tutorials</span>
-        </nuxt-link>
-        <nuxt-link
-          v-if="latest && latest.release"
-          :title="`v${latest.release.version} is the latest version of Nomie`"
-          :to="`/release/${latest.release.version}`"
-          class="nav-emoji mr-3"
-        >
-          🎉
-          <span class="hidden md:inline-flex text-sm text-gray-700 ml-1 mr-2">Latest</span>
-        </nuxt-link>
-        <button
-          v-if="!$store.state.showInstall && latest && latest.release"
-          class="pill bg-blue-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
-          @click="$store.dispatch('install/show', true)"
-        >v{{latest.release.version}}</button>
-        <button
-          v-if="$store.state.showInstall"
-          class="pill bg-red-600 text-white px-4 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-full"
-          @click="$store.dispatch('install/show', false)"
-        >Done</button>
+          <nuxt-link
+            title="Nomie tips and tricks"
+            v-if="latest && latest.release"
+            :to="`/tutorials`"
+            class="nav-link hover:underline"
+          >Tutorials</nuxt-link>
+          <nuxt-link
+            :title="`See all releases`"
+            :to="`/release`"
+            class="nav-link hover:underline"
+          >Releases</nuxt-link>
+          <nuxt-link
+            :title="`Looking for things to Track?`"
+            :to="`/trackers`"
+            class="nav-link hover:underline"
+          >Library</nuxt-link>
+          <nuxt-link
+            v-show="mobile"
+            :title="`Latest Version`"
+            :to="`/latest`"
+            class="nav-link hover:underline"
+          >Latest Version</nuxt-link>
+          <a
+            v-show="mobile"
+            :title="`GitHub`"
+            href="https://github.com/open-nomie/nomie"
+            class="nav-link hover:underline"
+          >GitHub</a>
+        </div>
+
+        <div class="install-buttons">
+          <button
+            v-if="!$store.state.showInstall && latest && latest.release"
+            class="pill bg-white text-white bg-blue-600 px-4 py-1 text-xs rounded-full"
+            @click="$store.dispatch('install/show', true)"
+          >Get</button>
+          <button
+            v-if="$store.state.showInstall"
+            class="pill bg-red-600 text-white px-4 py-1 text-xs rounded-full"
+            @click="$store.dispatch('install/show', false)"
+          >Done</button>
+        </div>
       </div>
     </header>
     <div class="contain mx-auto py-4" v-if="$slots.hasOwnProperty('pageTitle')">
@@ -165,6 +172,8 @@ export default {
   data() {
     return {
       scrolled: false,
+      showMenu: false,
+      mobile: this.$Device.size.sm || this.$Device.size.xs,
     }
   },
   computed: {
@@ -172,7 +181,20 @@ export default {
       return this.$store.state.latest
     },
   },
+  watch: {
+    $route(to, from) {
+      this.closeMenu()
+    },
+  },
   methods: {
+    toggleMenu() {
+      this.showMenu = !this.showMenu
+    },
+    closeMenu() {
+      setTimeout(() => {
+        this.showMenu = false
+      }, 120)
+    },
     back() {
       if (document.referrer.indexOf(window.location.host) !== -1) {
         this.$router.push('/')
@@ -189,8 +211,12 @@ export default {
         this.scrolled = false
       }
     }
+    this.mobile = this.$Device.size.sm || this.$Device.size.xs
     if (process.client) {
       this.$Device.onScroll(_scrolled)
+      this.$Device.onResize(() => {
+        this.mobile = this.$Device.size.sm || this.$Device.size.xs
+      })
     }
   },
 }
@@ -203,14 +229,22 @@ export default {
   pointer-events: none;
   transition: all 0.2s ease-in-out;
 }
+.header-container {
+  height: 60px !important;
+}
 .scrolled .show-on-scroll {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
 }
-</style>
+header {
+  @apply top-0;
+  @apply z-50;
+  @apply bg-white;
+  @apply shadow-2xl;
+  @apply bg-gray-900;
+}
 
-<style scoped>
 /* * {
   border: solid 1px red;
 } */
@@ -218,11 +252,60 @@ main#main-content {
   @apply pb-6;
   min-height: 70vh;
 }
-.nav-emoji {
+.nav-link {
   @apply px-2;
   @apply py-1;
-  @apply rounded-full;
-  @apply text-lg;
+  @apply mx-2;
+  @apply text-white;
+  @apply font-semibold;
+}
+
+.menu-items.fullscreen {
+  @apply z-40;
+  @apply bg-gray-900;
+  @apply fixed;
+  @apply left-0;
+  @apply min-w-full;
+  @apply min-h-full;
+  @apply p-4;
+  @apply pointer-events-none;
+
+  top: 60px;
+}
+
+.menu-button {
+  @apply text-white;
+  @apply pl-1;
+  @apply text-left;
+
+  width: 60px;
+  font-size: 22px;
+  outline: none !important;
+}
+
+.menu-items.fullscreen._hidden {
+  transition: all 0.2s ease-in;
+  transform: translateY(-80px);
+  opacity: 0;
+}
+.menu-items.fullscreen._visible {
+  transition: all 0.3s ease-in-out;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.menu-items.fullscreen .nav-link {
+  @apply block;
+  @apply text-left;
+  @apply text-white;
+  @apply border-gray-800;
+  @apply py-3;
+  border-bottom-width: 1px;
+}
+
+.menu-items.fullscreen .nav-link.nuxt-link-active {
+  @apply text-blue-400;
 }
 
 .logo-wrap {
@@ -244,21 +327,20 @@ main#main-content {
   left: 0;
   transform: translateX(0);
   opacity: 1;
-  min-width: 90px;
-  max-width: 90px;
+  min-width: 80px;
 }
 .header-logo-mark {
   opacity: 0;
 }
-.scrolled .header-logo-words {
+/* .scrolled .header-logo-words {
   transition: all 0.2s ease-in-out;
   transform: translateX(-100px);
   opacity: 0;
-}
+} */
 
-.scrolled .header-logo-mark {
+/* .scrolled .header-logo-mark {
   opacity: 1;
-}
+} */
 
 .badge {
   @apply text-xs;
@@ -292,19 +374,17 @@ main#main-content {
 }
 
 .closeButton {
+  @apply fixed;
   @apply rounded-full;
   @apply bg-black;
   @apply text-white;
   @apply text-xl;
+  @apply z-40;
 
-  display: none;
-
-  right: 50%;
-  margin-right: -25px;
-  position: absolute;
-  bottom: -25px;
-  width: 50px;
-  height: 50px;
+  top: 6px;
+  right: 6px;
+  width: 40px;
+  height: 40px;
 }
 
 .install-instructions._visible {
@@ -334,19 +414,10 @@ main#main-content {
   transition: transform 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8);
 }
 
-header {
-  @apply sticky;
-  @apply bg-white;
-  @apply top-0;
-  @apply mb-4;
-  @apply shadow-lg;
-  @apply z-50;
-}
 header .contain {
   @apply flex;
   @apply items-center;
   @apply justify-between;
-  @apply h-auto;
 }
 
 footer {

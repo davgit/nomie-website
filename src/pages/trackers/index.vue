@@ -1,10 +1,7 @@
 <template>
   <Layout :showBack="true" pageTitle="Nomie Tracker Library">
-    <div class="contain my-3 pt-3 md:pt-6 md:my-6">
-      <div slot="pageTitle" class="page-title mb-6">
-        <h1>Nomie Tracker Library</h1>
-        <p>Looking for items to track? Hopefully this will become more plentiful in the future</p>
-      </div>
+    <SectionHeader sectionTitle="Tracker Library" sectionLink="/trackers"></SectionHeader>
+    <div class="contain my-3">
       <nuxt-link
         :to="`/trackers/${tracker.slug}`"
         class="block hover:bg-gray-100 p-2 px-5 flex items-center"
@@ -35,16 +32,15 @@ import dayjs from 'dayjs'
 export default {
   async asyncData({ $content, params }) {
     let trackers = await $content('trackers').sortBy('tag', 'desc').fetch()
-    console.log({ trackers })
     return {
       trackers,
     }
   },
   computed: {},
+
   methods: {
     description(tkrPack) {
       const tkr = tkrPack.tracker
-      console.log(tkr)
       if (tkrPack.description) {
         return tkrPack.description
       } else if (tkr.picks) {
