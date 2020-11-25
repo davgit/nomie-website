@@ -34,7 +34,7 @@
         >send them here</a>
       </p>
       <p class="mb-6">
-        <a href="https://twitter.com/corbinux" class="underline text-blue-400">Brandon</a>
+        <a href="https://twitter.com/brandoncorbin" class="underline text-blue-400">@brandoncorbin</a>
       </p>
     </div>
   </div>

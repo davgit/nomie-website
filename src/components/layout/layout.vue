@@ -19,14 +19,14 @@
         >
           <nuxt-link
             title="Nomie Homepage"
-            v-if="mobile"
+            v-show="mobile"
             :to="`/`"
             class="nav-link hover:underline"
             style="color:#FFF !important"
           >Home</nuxt-link>
           <nuxt-link
             title="Nomie tips and tricks"
-            v-if="latest && latest.release"
+            v-show="latest && latest.release"
             :to="`/tutorials`"
             class="nav-link hover:underline"
           >Tutorials</nuxt-link>

@@ -67,9 +67,7 @@ body {
 }
 
 .content p {
-  @apply font-light;
-  color: var(--text-solid-800);
-  font-size: 95%;
+  @apply text-base;
 }
 
 .page-title {
@@ -101,8 +99,8 @@ button {
 .content h5,
 .content h6 {
   @apply mb-3;
-  font-weight: bold;
-  line-height: 125%;
+  @apply font-bold;
+  @apply leading-auto;
 }
 
 .hide-no-scroll {

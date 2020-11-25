@@ -101,7 +101,7 @@ export default Vue.extend({
   computed: {},
   data() {
     return {
-      tab: 'install',
+      tab: 'privacy',
       size: undefined,
     }
   },
