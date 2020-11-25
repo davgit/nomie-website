@@ -2,7 +2,7 @@
   <Layout :showBack="true" pageTitle="Tutorials">
     <SectionHeader
       sectionTitle="Tutorials"
-      pageTitle="Setup your Nomie game"
+      pageTitle="Step up your Nomie game"
       sectionLink="/tutorials"
     />
     <div class="contain my-3 pt-3">

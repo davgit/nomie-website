@@ -98,23 +98,10 @@ export default Vue.extend({
       latest,
     }
   },
-  computed: {
-    who() {
-      return random(['😍', '😡', '🤯', '👨‍👩‍👧', '❤️', '👿', '👼🏽', '👮'])
-    },
-    what() {
-      return random(['🍺', '🚬', '🎉', '🐶', '🐭', '🍄', '🌓'])
-    },
-    where() {
-      return random(['🚘', '⛵️', '🛥', '🏖', '⛪️', '📥'])
-    },
-    when() {
-      return random(['⏰', '🌤', '🛌', '🍱', '🏓', '🏈', '🎖'])
-    },
-  },
+  computed: {},
   data() {
     return {
-      tab: 'privacy',
+      tab: 'install',
       size: undefined,
     }
   },
@@ -133,8 +120,6 @@ export default Vue.extend({
   line-height: 100%;
 }
 
-.container--tabs {
-}
 .container--tabs .tabs {
   @apply flex;
   @apply items-center;

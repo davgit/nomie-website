@@ -5,7 +5,7 @@
         <img src="/images/nomie-color.svg" style="min-width:32px;" class="mr-2" />
       </nuxt-link>
       <i class="zmdi zmdi-chevron-right text-3xl text-gray-400 mr-2 hide-no-scroll"></i>
-      <h1 class="leading-4 md:text-xl">
+      <h1 class="leading-4 md:text-xl hover:bg-blue-100 p-2 mr-1">
         <nuxt-link :to="sectionLink" class="leading-4">{{sectionTitle}}</nuxt-link>
       </h1>
       <i v-if="pageTitle" class="zmdi zmdi-chevron-right text-3xl text-gray-400 mr-2"></i>
@@ -61,7 +61,6 @@ h2.title {
 }
 .section-header--wrap h1 {
   @apply font-semibold;
-  @apply mr-3;
 }
 .section-header--wrap .section-header {
   @apply flex;
