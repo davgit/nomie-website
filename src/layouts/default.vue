@@ -80,10 +80,6 @@ body {
   @apply font-bold;
   @apply leading-10;
 }
-.page-title p {
-  @apply text-sm;
-  @apply text-gray-500;
-}
 
 button {
   transition: all 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8);
@@ -159,7 +155,6 @@ a:focus {
 }
 
 .content {
-  @apply text-base;
   overflow-x: hidden;
 }
 .content a,
@@ -244,7 +239,7 @@ a:focus {
 .content ol,
 .content ul {
   @apply p-3;
-  @apply ml-3;
+
   @apply mb-4;
 }
 

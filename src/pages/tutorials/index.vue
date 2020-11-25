@@ -1,6 +1,10 @@
 <template>
   <Layout :showBack="true" pageTitle="Tutorials">
-    <SectionHeader sectionTitle="Tutorials" sectionLink="/tutorials" />
+    <SectionHeader
+      sectionTitle="Tutorials"
+      pageTitle="Setup your Nomie game"
+      sectionLink="/tutorials"
+    />
     <div class="contain my-3 pt-3">
       <nuxt-link
         :to="`/tutorials/${tutorial.slug}`"
@@ -13,13 +17,13 @@
           <h2
             class="font-bold text-xl text-blue-500 hover:text-blue-600 leading-6 mb-1"
           >{{tutorial.title}}</h2>
-          <p class="text-gray-500">
-            <strong class="text-gray-700">By {{tutorial.author}}</strong>
+          <p class="text-gray-600 leading-auto mb-1">{{tutorial.description}}</p>
+          <p class="text-gray-500 text-xs">
             <span
-              class="text-gray-600"
+              class="text-gray-500"
               v-if="tutorial && tutorial.version"
-            >{{tutorial.version ? `v${tutorial.version}` : ''}}</span>
-            {{tutorial.description}}
+            >{{tutorial.version ? `v${tutorial.version} • ` : ''}}</span>
+            By {{tutorial.author}}
           </p>
         </main>
       </nuxt-link>

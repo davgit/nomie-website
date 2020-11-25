@@ -1,6 +1,13 @@
 <template>
-  <Layout :showBack="true" pageTitle="Nomie Tracker Library">
+  <Layout :showBack="true" pageTitle="Nomie Community Tracker Library">
     <SectionHeader sectionTitle="Tracker Library" sectionLink="/trackers"></SectionHeader>
+    <div class="contain mt-5 text-sm text-gray-600 text-center">
+      Welcome to Nomie's Community Tracker library.
+      <nuxt-link
+        to="/tutorials/submit-a-tracker"
+        class="underline text-blue-500"
+      >Contribute a Tracker</nuxt-link>
+    </div>
     <div class="contain my-3 flex flex-wrap justify-center">
       <nuxt-link
         :to="`/trackers/${tracker.slug}`"
