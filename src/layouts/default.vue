@@ -236,6 +236,19 @@ a:focus {
   @apply bg-gray-900;
 }
 
+.content-generic {
+  @apply font-light;
+  @apply leading-8;
+}
+
+.content-generic a {
+  @apply text-blue-500;
+  @apply underline;
+}
+.content-generic a:hover {
+  background-color: rgba(0, 110, 255, 0.1);
+}
+
 .content ol,
 .content ul {
   @apply p-3;

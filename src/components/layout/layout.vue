@@ -18,6 +18,13 @@
           :class="`menu-items ${mobile ? 'fullscreen' : ''} ${showMenu ? '_visible' : '_hidden'}`"
         >
           <nuxt-link
+            title="Nomie Homepage"
+            v-if="mobile"
+            :to="`/`"
+            class="nav-link hover:underline"
+            style="color:#FFF !important"
+          >Home</nuxt-link>
+          <nuxt-link
             title="Nomie tips and tricks"
             v-if="latest && latest.release"
             :to="`/tutorials`"
