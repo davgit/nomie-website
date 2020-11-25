@@ -266,7 +266,6 @@ header {
   border: solid 1px red;
 } */
 main#main-content {
-  @apply pb-6;
   min-height: 70vh;
 }
 .nav-link {
@@ -440,7 +439,6 @@ footer {
   @apply py-6;
   @apply px-5;
   @apply text-gray-900;
-
   border-top: solid 1px rgba(0, 0, 0, 0.1);
 }
 footer ul li a {

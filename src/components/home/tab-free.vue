@@ -5,7 +5,7 @@
     >I need Nomie</h1>
     <h2
       class="leading-6 text-center mx-1 text-xl md:text-2xl text-gray-500 mb-12"
-    >and everyone is invited for the ride.</h2>
+    >Everyone else is just invited for the ride.</h2>
     <div class="content-generic text-xl md:text-2xl mb-12">
       <p
         class="mb-4"

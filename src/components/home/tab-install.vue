@@ -1,14 +1,14 @@
 <template>
   <div class="tab-install text-center text-base">
     <h2
-      class="leading-auto mb-1 text-center text-2xl md:text-3xl"
+      class="leading-auto text-center text-3xl md:text-4xl mb-1 font-semibold"
     >Install to {{tab==='desktop' ? 'Computer' : 'Homescreen'}}</h2>
 
     <h3
-      class="leading-6 text-center mx-1 text-base text-gray-400 mb-6 md:mb-10"
-    >Nomie is best/safest when installed on as a WebApp.</h3>
+      class="leading-6 text-center mx-1 text-xl md:text-2xl text-gray-500 mb-12 font-normal"
+    >For the best experience, install Nomie on your {{tab==='desktop' ? 'computer' : 'home screen'}}.</h3>
 
-    <div class="pills mb-6 md:mb-10">
+    <div class="pills">
       <button :class="{active:tab=='ios'}" @click="tab='ios'">iOS</button>
       <button :class="{active:tab=='android'}" @click="tab='android'">Android</button>
       <button :class="{active:tab=='desktop'}" @click="tab='desktop'">Desktop</button>
@@ -103,7 +103,7 @@ export default {
   @apply rounded-lg;
   @apply bg-gray-800;
   @apply pl-6;
-  @apply mt-6;
+  @apply mt-3;
   @apply mx-auto;
 
   max-width: 600px;
