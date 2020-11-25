@@ -1,14 +1,14 @@
 <template>
   <Layout :showBack="true" pageTitle="Nomie Tracker Library">
     <SectionHeader sectionTitle="Tracker Library" sectionLink="/trackers"></SectionHeader>
-    <div class="contain my-3 flex flex-wrap">
+    <div class="contain my-3 flex flex-wrap justify-center">
       <nuxt-link
         :to="`/trackers/${tracker.slug}`"
         class="tracker-card w-full md:w-5/12"
         v-for="tracker in trackers"
         :key="tracker.tracker.tag"
       >
-        <ClassicButton :emoji="tracker.tracker.emoji" :label="tracker.tracker.label" />
+        <ClassicButton :emoji="tracker.tracker.emoji" />
 
         <main class="w-full ml-4">
           <h2 class="text-black font-bold text-lg">{{tracker.tracker.label}}</h2>
@@ -30,7 +30,7 @@ export default {
     ClassicButton,
   },
   async asyncData({ $content, params }) {
-    let trackers = await $content('trackers').sortBy('tag', 'desc').fetch()
+    let trackers = await $content('trackers').sortBy('label', 'asc').fetch()
     return {
       trackers,
     }
