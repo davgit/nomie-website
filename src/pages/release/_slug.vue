@@ -4,45 +4,40 @@
     :title="`Nomie Release v${release.title}`"
     :pageTitle="`Version ${release.title}`"
   >
-    <div class="contain my-3 pt-3 md:pt-6 md:my-6 bg-white">
-      <div slot="pageTitle" class="page-title">
-        <div class="flex items-center mb-4">
-          <main>
-            <h1 class>Nomie {{release.title}}</h1>
-            <p>Released {{dayjs(release.createdAt).fromNow()}}</p>
-          </main>
-          <div class="spacer" />
-          <aside class="flex items-center mb-5 contain mx-auto">
-            <nuxt-link
-              to="/release"
-              title="View all Nomie Release Notes"
-              class="text-gray-600 ml-5 hover:text-blue-600 md:ml-2 mr-3 text-sm"
-            >All</nuxt-link>
+    <SectionHeader
+      sectionTitle="🎉  Release Notes"
+      sectionLink="/release"
+      :pageTitle="`v${release.version}`"
+    >
+      <nuxt-link
+        v-if="latest.version !== release.version"
+        :to="`/release/${latest.version}`"
+        class="bg-red-100 hover:bg-red-200 text-red-600 rounded-full px-4 py-1 text-xs mr-3 inline-flex items-center"
+      >
+        Latest
+        <i class="zmdi zmdi-chevron-right ml-1" />
+      </nuxt-link>
+      <span
+        v-else
+        class="bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-xs mr-3 inline-flex items-center"
+      >
+        <i class="zmdi zmdi-thumb-up mr-1" />
+        Latest
+      </span>
+    </SectionHeader>
 
-            <nuxt-link
-              v-if="latest.version !== release.version"
-              :to="`/release/${latest.version}`"
-              class="bg-red-100 hover:bg-red-200 text-red-600 rounded-full px-4 py-1 text-xs mr-3 inline-flex items-center"
-            >
-              Latest v{{latest.version}}
-              <i class="zmdi zmdi-chevron-right ml-1" />
-            </nuxt-link>
-
-            <span
-              v-else
-              class="bg-blue-100 text-blue-600 rounded-full px-4 py-1 text-xs mr-3 inline-flex items-center"
-            >
-              <i class="zmdi zmdi-thumb-up mr-1" />
-              Latest
-            </span>
-          </aside>
-        </div>
+    <div class="contain bg-white flex">
+      <div class="content md:w-9/12">
+        <nuxt-content class="p-5 md:px-2" :document="release"></nuxt-content>
       </div>
-
-      <div class="content-wrapper md:rounded-lg text-lg text-gray-800 mt-6">
-        <div class="content contain mx-auto">
-          <nuxt-content :document="release"></nuxt-content>
-        </div>
+      <div class="hidden md:block md:w-3/12 p-4 text-sm sticky top-0">
+        <h4 class="font-semibold px-2 my-2">TOC</h4>
+        <a
+          class="toc-item block py-1 px-2 rounded-md hover:bg-gray-200 text-blue-600"
+          :href="`#${item.id}`"
+          v-for="(item,index) in release.toc"
+          :key="index"
+        >{{item.text}}</a>
       </div>
     </div>
   </Layout>

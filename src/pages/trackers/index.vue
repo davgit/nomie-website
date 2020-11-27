@@ -1,26 +1,25 @@
 <template>
-  <Layout :showBack="true" pageTitle="Nomie Tracker Library">
-    <div class="contain my-3 pt-3 md:pt-6 md:my-6">
-      <div slot="pageTitle" class="page-title mb-6">
-        <h1>Nomie Tracker Library</h1>
-        <p>Looking for items to track? Hopefully this will become more plentiful in the future</p>
-      </div>
+  <Layout :showBack="true" pageTitle="Nomie Community Tracker Library">
+    <SectionHeader sectionTitle="Tracker Library" sectionLink="/trackers"></SectionHeader>
+    <div class="contain mt-5 text-sm text-gray-600 text-center">
+      Welcome to Nomie's Community Tracker library.
+      <nuxt-link
+        to="/tutorials/submit-a-tracker"
+        class="underline text-blue-500"
+      >Contribute a Tracker</nuxt-link>
+    </div>
+    <div class="contain my-3 flex flex-wrap justify-center">
       <nuxt-link
         :to="`/trackers/${tracker.slug}`"
-        class="block hover:bg-gray-100 p-2 px-5 flex items-center"
+        class="tracker-card w-full md:w-5/12"
         v-for="tracker in trackers"
         :key="tracker.tracker.tag"
       >
-        <span class="emoji text-5xl mr-3">{{tracker.tracker.emoji}}</span>
-        <main class="w-full">
-          <h2 class="font-bold text-xl text-blue-500 hover:text-blue-600 flex items-center">
-            <span class="truncate ...">{{tracker.tracker.label}}</span>
-            <span class="spacer md:hidden" />
-            <span
-              class="text-gray-500 bg-gray-200 py-1 px-3 text-xs rounded-full font-semibold ml-3"
-            >{{displayType(tracker.tracker.type)}}</span>
-          </h2>
-          <p class="text-xs text-gray-500">{{description(tracker)}}</p>
+        <ClassicButton :emoji="tracker.tracker.emoji" />
+
+        <main class="w-full ml-4">
+          <h2 class="text-black font-bold text-lg">{{tracker.tracker.label}}</h2>
+          <p class="text-gray-600">{{description(tracker)}}</p>
         </main>
       </nuxt-link>
     </div>
@@ -29,22 +28,25 @@
 
 <script>
 import Layout from '@/components/layout/layout.vue'
+import ClassicButton from '@/components/classic-button/classic-button.vue'
 import { getTypeDetails } from '@/modules/app/tracker-type'
 import dayjs from 'dayjs'
 
 export default {
+  components: {
+    ClassicButton,
+  },
   async asyncData({ $content, params }) {
-    let trackers = await $content('trackers').sortBy('tag', 'desc').fetch()
-    console.log({ trackers })
+    let trackers = await $content('trackers').sortBy('label', 'asc').fetch()
     return {
       trackers,
     }
   },
   computed: {},
+
   methods: {
     description(tkrPack) {
       const tkr = tkrPack.tracker
-      console.log(tkr)
       if (tkrPack.description) {
         return tkrPack.description
       } else if (tkr.picks) {
@@ -62,4 +64,25 @@ export default {
 </script>
 
 <style>
+.tracker-card {
+  @apply flex;
+  @apply items-center;
+  @apply shadow-md;
+  @apply m-4;
+  @apply p-4;
+  @apply rounded-2xl;
+  @apply bg-gray-200;
+  transition: all 0.2s ease-in-out;
+}
+.tracker-card:hover {
+  @apply bg-blue-500;
+  @apply text-white;
+}
+.tracker-card:hover h2,
+.tracker-card:hover p {
+  @apply text-white;
+}
+.tracker-card .classic-button label {
+  display: none;
+}
 </style>

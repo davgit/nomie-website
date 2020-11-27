@@ -4,7 +4,13 @@
     :title="`${tracker.emoji} ${tracker.label} tracking in Nomie`"
     :pageTitle="`${tracker.emoji} ${tracker.label}`"
   >
-    <div slot="pageTitle" class="page-title flex items-center">
+    <SectionHeader
+      sectionTitle="Tracker Library"
+      sectionLink="/trackers"
+      :pageTitle="`${tracker.emoji} ${tracker.label}`"
+    ></SectionHeader>
+
+    <div class="p-3 flex items-center contain mx-auto">
       <classic-button :label="tracker.label" :emoji="tracker.emoji" class="mr-4" />
       <div v-if="payload">
         <div class="text-gray-600 text-md">{{payload.description}}</div>
@@ -13,13 +19,13 @@
           class="bg-green-600 rounded-full my-5 text-sm text-white flex-shrink-0 flex-grow-0 py-1 px-3"
         >
           <i class="zmdi zmdi-download" />
-          Download {{tracker.label}}
+          Install {{tracker.label}}
         </button>
       </div>
     </div>
-    <div class="p-3 bg-gray-200">
+    <div class="p-3 bg-gray-200 contain mx-auto md:rounded-md">
       <div class="contain mx-auto">
-        <ul class="details">
+        <ul class="details mx-2">
           <li>
             <strong>Tag</strong>
             <span>{{tracker.tag}}</span>
@@ -28,19 +34,19 @@
             <strong>Type</strong>
             <span>{{tracker.type}}</span>
           </li>
-          <li>
+          <li v-if="tracker.type !== 'picker'">
             <strong>Math</strong>
             <span>{{tracker.math}}</span>
           </li>
-          <li>
+          <li v-if="tracker.uom !== 'num' && tracker.type !== 'picker'">
             <strong>UOM</strong>
             <span>{{tracker.uom}}</span>
           </li>
-          <li v-if="tracker.default">
+          <li v-if="tracker.default && tracker.type !== 'picker'">
             <strong>Default</strong>
             <span>{{tracker.default}}</span>
           </li>
-          <li v-if="tracker.one_tap">
+          <li v-if="tracker.one_tap && tracker.type !== 'picker'">
             <strong>One Tap</strong>
             <span>{{tracker.one_tap}}</span>
           </li>
@@ -52,20 +58,66 @@
             <strong>Score</strong>
             <span>{{tracker.score}}</span>
           </li>
-          <li class="picker-list" v-if="tracker.type == 'picker'">
-            <strong>Pick List</strong>
-            <span>
-              <div class="item-wrap text-sm" v-for="(item,index) in tracker.picks" :key="index">
-                <div
-                  class="font-semibold"
-                  v-if="item.substr(item.length - 1)===':'"
-                >{{item.replace(':','')}}</div>
-                <div v-else class="py-1">{{item}}</div>
-                <hr />
+          <li class="picker-list overflow-hidden" v-if="tracker.type == 'picker'">
+            <div
+              class="item-wrap text-sm truncate"
+              v-for="(item,index) in tracker.picks"
+              :key="index"
+            >
+              <div
+                class="font-semibold mt-2 mb-1 text-lg"
+                v-if="item.trim().substr(item.length - 1)===':'"
+              >{{item.trim().replace(':','')}}</div>
+              <div v-else class="py-1 text-gray-700">
+                <h3 class="truncate">{{item}}</h3>
               </div>
-            </span>
+            </div>
           </li>
         </ul>
+      </div>
+    </div>
+
+    <div
+      :class="`install-instructions ${$store.state.downloadTracker ? '_visible' : '_hidden'}`"
+      @click.stop="$store.commit('download/tracker', false)"
+    >
+      <div
+        :class="`install-window ${$store.state.downloadTracker ? '_visible' : '_hidden'}`"
+        @click.stop="()=>{}"
+      >
+        <button class="closeButton" @click="$store.commit('download/tracker', false)">
+          <i class="zmdi zmdi-close" />
+        </button>
+        <h1 class="text-center">
+          Add
+          <strong>
+            <span class="mx-1">{{tracker.emoji}}</span>
+            {{tracker.label}}
+          </strong> to Nomie
+        </h1>
+        <ol class="my-3 text-sm text-gray-200 list-decimal ml-5">
+          <li>Download this Tracker</li>
+          <li>Open Nomie, tap Add Tracker</li>
+          <li>Tap 'Import from File'</li>
+          <li>Select downloaded tracker file.</li>
+        </ol>
+        <div class="bg-gray-900">
+          <img
+            src="https://shareking.s3.amazonaws.com/RPReplay_Final1606152856-1606153143.gif"
+            class="rounded-lg overflow-hidden mx-auto block my-3"
+            style="height:200px;"
+          />
+        </div>
+        <div class="flex items-center">
+          <button class="py-2 px-3 text-white w-full text-gray-600" @click="closeDownload">Cancel</button>
+          <button
+            @click="doDownload"
+            class="bg-green-600 rounded-full w-full my-5 text-white py-2 px-3"
+          >
+            <i class="zmdi zmdi-download" />
+            Download
+          </button>
+        </div>
       </div>
     </div>
   </Layout>
@@ -85,7 +137,6 @@ export default {
   async asyncData({ $content, params }) {
     const payload = await $content('trackers', params.slug).fetch()
     const tracker = new Tracker(payload.tracker)
-    console.log({ payload })
     return {
       tracker,
       payload,
@@ -93,11 +144,19 @@ export default {
   },
   methods: {
     download() {
+      console.log('Downloads')
+      this.$store.commit('download/tracker', this.tracker)
+    },
+    closeDownload() {
+      this.$store.commit('download/tracker', null)
+    },
+    async doDownload() {
       const nomieTrackerPayload = {
         type: 'tracker',
         tracker: this.tracker,
       }
-      downloader(nomieTrackerPayload, `${this.tracker.tag}-nomie.json`)
+      await downloader(nomieTrackerPayload, `${this.tracker.tag}-nomie.json`)
+      this.closeDownload()
     },
     dayjs(date) {
       return dayjs(date)
@@ -119,24 +178,12 @@ export default {
   @apply p-0;
 }
 .details li {
-  @apply flex;
-  @apply items-start;
-  @apply justify-start;
   @apply w-full;
   @apply leading-5;
-
+  @apply py-3;
   border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 }
-.details li strong,
-.details li span {
-  @apply block;
-  @apply p-2;
-}
-.details li strong {
-  @apply pr-3;
-  @apply flex-shrink-0;
-  @apply flex-grow-0;
-  width: 120px;
-  border-right: solid 1px rgba(0, 0, 0, 0.1);
+.details li:last-child {
+  border-bottom: none;
 }
 </style>

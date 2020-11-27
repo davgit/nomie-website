@@ -4,6 +4,7 @@ title: 'Help write a Tutorial'
 description: 'Help people get better with their Nomie use'
 createdAt: '2020-11-08T00:14:41.516Z'
 slug: 'contribute'
+emoji: '✍🏽'
 ---
 
 Want to help contribute to Nomie? I'm horrible at writing, so it'd be super awesome if you'd consider writing a tutorial on ANY part of Nomie v5 that you think would be helpful. This website is hosted on Github, and is [available for everyone to contribute.](https://github.com/open-nomie/website/tree/develop)

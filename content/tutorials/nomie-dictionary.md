@@ -6,6 +6,7 @@ createdAt: '2020-11-17T00:14:41.516Z'
 version: '5'
 slug: 'nomie-dictionary'
 published: false
+emoji: '📘'
 ---
 
 ## Tracker Types

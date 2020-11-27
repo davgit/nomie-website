@@ -5,7 +5,10 @@ description: 'Step up your tracking game with automated tracking'
 createdAt: '2020-11-09T00:14:41.516Z'
 version: '5'
 slug: 'v5-api'
+emoji: '🚀'
 ---
+
+<img src="https://media.giphy.com/media/PDsgxQoXvUZGg/giphy.gif" width="100%" />
 
 # What's the API?
 

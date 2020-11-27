@@ -1,0 +1,41 @@
+{
+  "type": "tracker",
+  "description": "Track the details of your migraines with this mega tracker",
+  "tags": [
+    "health",
+    "head",
+    "migraine",
+    "pain",
+    "headache"
+  ],
+  "tracker": {
+    "tag": "migraine",
+    "id": "1d4c5d7678ff3ccd627701389cc60a10",
+    "type": "picker",
+    "color": "#369DD3",
+    "math": "sum",
+    "ignore_zeros": false,
+    "uom": "num",
+    "emoji": "🤯",
+    "one_tap": false,
+    "include": "",
+    "hidden": false,
+    "picks": [
+      "Intensity:",
+      "High #migraine_pain(10)",
+      "Med-High #migraine_pain(7)",
+      "Med #migraine_pain(5)",
+      "Low-Med #migraine_pain(3)",
+      "Low #migraine_pain(1)",
+      "Duration:",
+      "5 min #migraine_duration(00:05:00)",
+      "10 min #migraine_duration(00:10:00)",
+      "15 min #migraine_duration(00:15:00)",
+      "20 min #migraine_duration(00:20:00)",
+      "30 min #migraine_duration(00:30:00)"
+    ],
+    "label": "Migraine"
+  },
+  "created": "2020-11-23T14:58:44.287Z",
+  "version": "5.5.3"
+}
