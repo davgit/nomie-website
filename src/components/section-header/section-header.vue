@@ -45,8 +45,9 @@ export default {
   @apply z-40;
   @apply border-gray-400;
   border-bottom-width: 1px;
-  background-color: rgba(250, 250, 250, 0.9);
   transform: border 0.2s ease-in-out;
+  background-color: gba(250, 250, 250, 0.9);
+  backdrop-filter: saturate(180%) blur(4px);
 }
 
 h2.title {
@@ -57,7 +58,7 @@ h2.title {
 .section-header--wrap {
   @apply sticky;
   @apply top-0;
-  @apply bg-white;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .section-header--wrap h1 {
   @apply font-semibold;

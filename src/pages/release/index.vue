@@ -9,8 +9,13 @@
         :key="release.slug"
       >
         <h2 class="font-bold text-xl">Nomie v{{release.title}}</h2>
-        <p class="text-gray-600">{{release.description}}</p>
-        <p class="text-xs text-gray-500 font-normal text-base">{{displayDate(release.createdAt)}}</p>
+        <p class="text-gray-600 leading-6">{{release.description}}</p>
+        <p class="text-xs text-gray-500 font-normal text-base flex mt-1 items-center">
+          <span
+            class="text-white bg-gray-500 px-3 py-1 rounded-full mr-2 inline-block text-xs"
+          >{{fromNow(release.createdAt)}}</span>
+          <span class="leading-6">{{displayDate(release.createdAt)}}</span>
+        </p>
       </nuxt-link>
     </div>
   </Layout>
@@ -41,6 +46,9 @@ export default {
   methods: {
     displayDate(date) {
       return dayjs(date).format('DD MMM YYYY')
+    },
+    fromNow(date) {
+      return dayjs(date).fromNow()
     },
   },
 }

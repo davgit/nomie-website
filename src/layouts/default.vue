@@ -131,16 +131,6 @@ button {
   @apply w-full;
 }
 
-.content img {
-  @apply mx-auto;
-  @apply my-10;
-  @apply rounded-xl;
-  @apply overflow-hidden;
-  @apply shadow-lg;
-
-  display: block;
-}
-
 button:active,
 button:focus,
 a:active,
@@ -175,16 +165,17 @@ a:focus {
 .content p {
   @apply mb-5;
   @apply leading-6;
+  @apply text-gray-900;
 }
 
 .content img {
-  @apply shadow-2xl;
-  @apply my-6;
+  @apply block;
+  @apply mr-auto;
+  @apply my-8;
   @apply overflow-hidden;
-  @apply mx-auto;
-  @apply rounded-lg;
-
-  max-height: 60vh;
+  @apply rounded-xl;
+  @apply shadow-xl;
+  @apply w-auto;
 }
 
 .content a {

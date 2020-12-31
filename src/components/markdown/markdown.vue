@@ -43,11 +43,6 @@ export default {
 }
 
 .markdown img {
-  @apply shadow-2xl;
-  @apply my-6;
-  @apply overflow-hidden;
-  @apply mx-auto;
-  @apply rounded-lg;
 }
 
 .markdown a {

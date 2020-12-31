@@ -15,7 +15,7 @@
         </nuxt-link>
 
         <div
-          :class="`menu-items ${mobile ? 'fullscreen' : ''} ${showMenu ? '_visible' : '_hidden'}`"
+          :class="`menu-items ${mobile ? 'fullscreen' : 'desktop'} ${showMenu ? '_visible' : '_hidden'}`"
         >
           <nuxt-link
             title="Nomie Homepage"
@@ -274,6 +274,24 @@ main#main-content {
   @apply mx-2;
   @apply text-white;
   @apply font-semibold;
+  transition: all 0.2s ease-in-out;
+}
+
+.menu-items.desktop .nav-link {
+  @apply rounded-full;
+  @apply py-2;
+  @apply px-4;
+  @apply text-white;
+  @apply bg-transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.menu-items.desktop .nav-link.nuxt-link-active {
+  @apply bg-white;
+  @apply rounded-full;
+  @apply py-2;
+  @apply px-4;
+  @apply text-blue-800;
 }
 
 .menu-items.fullscreen {
