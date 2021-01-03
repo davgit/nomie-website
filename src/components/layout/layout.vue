@@ -138,10 +138,20 @@
       <div class="container mx-auto"></div>
     </footer>
     <div class="last-footer p-3 text-xs text-gray-700 bg-gray-100">
-      <div class="contain mx-auto flex items-center justify-center">
-        <img src="/images/happy-data-logo.svg" width="100" class="mr-3" />
-        11650 Olio Road, Suite 1000-118 Fishers, IN 46040 USA.
-        &copy; 2020
+      <div class="contain mx-auto flex flex-col items-center justify-center">
+        <div class="flex items-center mb-2">
+          11650 Olio Road, Suite 1000-118 Fishers, IN 46040 USA.
+          &copy; 2020
+        </div>
+        <div class>
+          <img src="/images/happy-data-logo.svg" width="100" class="my-2" />
+          Made by
+          <a
+            href="https://brandons.app"
+            class="text-blue-600"
+            title="Brandon Corbin - Product Designer"
+          >Brandon</a>
+        </div>
       </div>
     </div>
 
