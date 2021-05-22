@@ -16,10 +16,9 @@ TL;DW: Stacks announced they're shutting down the web auth that Nomie uses for s
 While this sucks, it is a necessary aspect of this free/open-source dance. So, what should you do? There are two solutions available to you.
 
 1. Create a Nomie Export of your data. (settings / data / 📦 Generate Backup)
+2. Change your Storage Location from Blockstack to either LocalStorage or CouchDB.
 
 ![Nomie 5 Storage Selector](https://shareking.s3.amazonaws.com/Screen-Shot-2021-05-22-09-00-30.64-1621688435.png)
-
-2. Change your Storage Location from Blockstack to either LocalStorage or CouchDB.
 
 ## What's the Difference?
 
