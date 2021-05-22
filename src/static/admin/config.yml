@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: develop
+  branch: master
 
 media_folder: src/static/img
 public_folder: /img
@@ -30,6 +30,28 @@ collections:
         }
       - { label: 'Body', name: 'body', widget: 'markdown', required: false }
       - { label: 'Created Date', name: 'createdAt', widget: 'datetime' }
+
+  - name: 'messages'
+    label: 'Messages'
+    format: 'frontmatter'
+    folder: 'content/messages'
+    create: true
+    slug: 
+      encoding: "ascii"
+      clean_accents: true
+      sanitize_replacement: "_"
+    identifier_field: 'title'
+    preview_path: 'messages/{{version}}'
+    preview_path_date_field: 'createdAt'
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Version', name: 'version', widget: 'string', required: false }
+      - { label: 'Image', name: 'image', widget: 'image', required: false }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: false }
+      - { label: 'Created Date', name: 'createdAt', widget: 'datetime' }
+
 
   - name: 'config'
     label: 'Config'
